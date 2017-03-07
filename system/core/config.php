@@ -38,4 +38,4 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', '_api');
+define('DB_NAME', 'cres_pass');

@@ -4,9 +4,9 @@
  * Drop any database with the same name and
  * create a new one and select it.
  */
-DROP DATABASE IF EXISTS `_api`;
-CREATE DATABASE `_api` CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `_api`;
+DROP DATABASE IF EXISTS `cres_pass`;
+CREATE DATABASE `cres_pass` CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `cres_pass`;
 
 /* --------------------------------------------------
  * TABLE `test`
