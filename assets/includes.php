@@ -42,6 +42,8 @@ $load['js'][] = 'routes';
  * assets/js/controllers/
  * --------------------------------------------------
  */
-$load['js']['controllers'][] = 'homeController';
-$load['js']['controllers'][] = 'pageController';
+$load['js']['controllers'][] = 'header-controller';
+$load['js']['controllers'][] = 'footer-controller';
+$load['js']['controllers'][] = 'home-controller';
+$load['js']['controllers'][] = 'page-controller';
 

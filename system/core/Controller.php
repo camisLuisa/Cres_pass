@@ -97,6 +97,7 @@ class Controller
 		if(property_exists($this->post, $index)){
 			return $this->post->$index;
 		}
+		return NULL;
 	}
 
 	/**

@@ -60,7 +60,7 @@ $include_file = 'includes';
  *		Use $localhost_suffix = '';
  */
 
-$localhost_suffix = '_api';
+$localhost_suffix = 'Cres_pass';
 $host_name = $_SERVER['HTTP_HOST'];
 
 /* --------------------------------------------------
@@ -125,4 +125,6 @@ require_once ASSETS_PATH.$include_file.'.php';
 	<!-- ANGULAR ROUTE BASE -->
 	<base href=<?= "/".$localhost_suffix."/" ?>>
 </head>
-<ng-view><ng-view>
+<?php include ASSETS_PATH.'views'.DIRECTORY_SEPARATOR.'header.php'; ?>
+<ng-view></ng-view>
+<?php include ASSETS_PATH.'views'.DIRECTORY_SEPARATOR.'footer.php'; ?>
