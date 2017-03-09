@@ -1,3 +1,4 @@
+<nav class="navbar navbar-default navbar-static-top">
 <nav class="navbar navbar-default navbar-fixed-top"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
 	<div class="container-fluid">
 	<div class=navbar-header">
@@ -39,4 +40,5 @@
 	<li><a href="#">Lojinhas</a></li>
 </ul>
 	</div>
+</nav>
 </nav>

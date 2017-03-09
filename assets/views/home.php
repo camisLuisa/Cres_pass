@@ -11,9 +11,10 @@
 		</div>
 	</div>
 </div>
-<div class="container testimonial">
+<!--<div class="container testimonial">
 	<h1>DEPOIMENTOS</h1>
 	<i class="fa fa-quote-left" aria-hidden="true"></i>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi incidunt animi ratione eos architecto aspernatur, mollitia sequi. Eius, perferendis nostrum fugit! Sequi deleniti itaque unde aspernatur, tempore atque dicta. Numquam.</p>
 	<h4>Lorem Ipsum - Ipsum Lorem</h4>
-</div>
+</div>-->
+

@@ -47,4 +47,4 @@ $load['js']['controllers'][] = 'header-controller';
 $load['js']['controllers'][] = 'footer-controller';
 $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'page-controller';
-
+$load['js']['controllers'][] = 'login-controller';
