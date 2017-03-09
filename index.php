@@ -81,6 +81,10 @@ require_once ASSETS_PATH.$include_file.'.php';
 ?>
 <html ng-app="app">
 <head>
+	<meta charset="utf-8">
+	<!--<link rel="icon" href="img/favicon.png" />-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Crescendo e Passando</title>
 	<?php
 	# Function to simplificate the include of a file.
 	function include_file($type, $link){
