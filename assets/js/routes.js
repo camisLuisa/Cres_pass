@@ -18,6 +18,10 @@
 		templateUrl: viewsPath+'login.php',
 		controller: 'LoginController'
 	})
+	.when('/cadastro', {
+		templateUrl: viewsPath+'signup.php',
+		controller: 'SignUpController'
+	})
 	.when('/page/:var', {
 		templateUrl: viewsPath+'page.php',
 		controller: 'PageController'
