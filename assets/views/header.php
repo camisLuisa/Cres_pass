@@ -1,3 +1,10 @@
+<div ng-controller="HeaderController">
+	<div class="container">
+		<div class="row">
+			<h1>{{title}}</h1>
+		</div>
+	</div>
+</div>
 <nav class="navbar navbar-default "><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
 	<div class="container-fluid">
 	<div class=navbar-header">

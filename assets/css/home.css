@@ -1,0 +1,56 @@
+/*         COLOR PALETTE:    
+
+	LIGHT YELLOW		#FFD86B;
+
+*/
+/* INTRO */
+.intro {
+	width: 100%;
+	padding: 10%;
+}
+
+.introImg img {
+	margin: auto;
+	display: block;
+	width: 80%;
+}
+
+.introTxt {
+	padding: 0 10%;
+	text-align: justify;
+}
+
+.introTxt h1 {color: #FFD86B;}
+
+.introTxt p {color: grey;}
+
+
+/* TESTIMONIALS 
+.testimonial {
+	padding: 5% 15%;
+}
+.testimonial h1 {
+	text-align: center;
+	padding: 2%;
+}
+
+.testimonial i {
+	color: grey;
+	font-size: 3.5em;
+	float: left;
+	margin-top: 40px;
+}
+
+.testimonial p {
+	float: right;
+	padding: 0 15%;
+	margin-top: -40px;
+	text-align: justify;
+}
+
+.testimonial h4 {
+	float: right;
+	padding: 0 15%;
+	text-align: justify;
+} */
+
