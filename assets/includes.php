@@ -20,7 +20,8 @@ $load['css']['core'][] = 'bootstrap-theme.min';
  * assets/css/
  * --------------------------------------------------
  */
-$load['css'][] = 'style';
+$load['css'][] = 'general';
+$load['css'][] = 'home';
 
 /* --------------------------------------------------
  * assets/js/core/
