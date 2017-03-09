@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
+<nav class="navbar navbar-default"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
 	<div class="container-fluid">
 	<div class=navbar-header">
 		<div ng-controller="HeaderController">
@@ -11,17 +11,18 @@
 		</div>
 		
 		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-		 	<form class="navbar-form navbar-right">
-		 	
+		 	<form class="navbar-form navbar-right" ng-submit="search(searchInput)">
 		 		<div class="form-group">
-		 			<input type="text class="form-control" placeholder="Digite o nome do produto, marca ou lojinha">
+		 			<input ng-model="searchInput" type="text class="form-control" placeholder="Digite o nome do produto, marca ou lojinha">
 		 		</div>
 		 		<button type="submit" class="btn btn-default">Buscar</button>
+			</form>
 		 </div>
 
 		 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-		 	<a href="#"><span></span> Login</a></form>
-			<a href="#"><span></span> Inscrever-se</a></form>
+		 		<button ng-click="go('#/login')">Inscrever-se</button>
+
+		 		<button ng-click="go('#/signup')">Inscrever-se</button>
 		</div> 	
 	</div>
 	</div>
