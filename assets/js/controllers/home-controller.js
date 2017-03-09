@@ -3,6 +3,10 @@ app.controller('HomeController', function($scope, $location, $routeParams, $http
 
 	$scope.return;
 
+	$scope.go = function(path) {
+		$location.path(path);
+	}
+
 	$scope.link = function(){
 		$location.path("/page/50");
 	}
