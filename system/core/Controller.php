@@ -1,6 +1,6 @@
 <?php
 /**
- * <PJ_API_NAME>
+ * <PROJECT_NAME>
  *
  * This content is released under the MIT License (MIT)
  *
@@ -24,9 +24,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package	<PJ_API_NAME>
- * @author Poli Júnior Engenharia - eComp Team
- * @copyright 2017, Poli Júnior Engenharia (http://polijuniorengenharia.com.br/)
+ * @package	<PROJECT_NAME>
+ * @author <AUTHOR>
+ * @copyright 2017, <COPYRIGHT>
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link <REPOSITORY_LINK>
  */
@@ -47,10 +47,10 @@ require_once CORE_PATH.'Lib.php';
  * database communication, validation and confirmation of infos, are
  * hadled in a controller.
  * 
- * @package		<PJ_API_NAME>
+ * @package		<PROJECT_NAME>
  * @subpackage	Core
- * @author 		Poli Júnior Engenharia - eComp
- * @link		<insert link to doc>
+ * @author 		<AUTHOR>
+ * @link		<DOC_LINK>
  */
 class Controller
 {
@@ -80,24 +80,61 @@ class Controller
 	 */
 	private $post;
 
-	function __construct()
-	{
+	/**
+	 * Variable to be returned to frontend.
+	 *
+	 * @var array
+	 */
+	protected $return;
+
+	function __construct(){
+		session_start();
 		$this->post = json_decode(file_get_contents("php://input"));
 	}
 
 	/**
-	 * Chech if the post received from the front
-	 * end has the property and then return it.
+	 * On the end of script execution, echo the encode
+	 * of whatever is set to Controller::return.
+	 */
+	function __destruct(){
+		if(isset($this->return)){
+			echo json_encode($this->return);
+		}
+	}
+
+	/**
+	 * If there's no $index, return an array with
+	 * the post received.
+	 * If is defined $index, check if the post
+	 * received from the front end has the property
+	 * and then return it.
 	 *
 	 * @param 	string 	$index The property name to be searched in Model::post.
 	 *
 	 * @return 	mixed 	Property received by JSON from the frontend.
 	 */
-	public function get_post($index){
-		if(property_exists($this->post, $index)){
-			return $this->post->$index;
+	public function get_post($index = NULL){
+		if(isset($this->post)){
+			if(is_null($index)){
+				$properties = get_object_vars($this->post);
+				$post = array();
+				foreach ($properties as $name => $value) {
+					$post[$name] = $this->post->$name;
+				}
+				return $post;
+			}
+			else if(property_exists($this->post, $index)){
+				return $this->post->$index;
+			}
+			else {
+				echo "<strong>WARNING:</strong> $index was not found in JSON post.".PHP_EOL;
+				return NULL;
+			}
 		}
-		return NULL;
+		else {
+			echo "<strong>WARNING:</strong> JSON post is not set.".PHP_EOL;
+			return NULL;
+		}
 	}
 
 	/**
