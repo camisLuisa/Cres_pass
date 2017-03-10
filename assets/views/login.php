@@ -1,17 +1,13 @@
-<div class="container">
-
-	<h1>LOGIN</h1>
-	<form class="form-horizontal">
-			<div class="col-xs-3">
-				<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-			</div>
-			<div class="col-xs-3">
-				<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-			</div>
+<div class="container login">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<h1>LOGIN</h1>
+			<form ng-submit="login(field)">
+				<input type="text" class="form-control" id="user" placeholder="Usuário" required ng-model="field.username">
+				<input type="password" class="form-control" id="password" placeholder="Senha" required ng-model="field.password">
+				<button type="submit">LOGIN</button>
+			</form>
 		</div>
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">LOGIN</button>
-			</div>
-	</form>
-
-</div>
+		<div class="col-md-4"></div>
+	</div>

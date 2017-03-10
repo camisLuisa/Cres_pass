@@ -22,6 +22,8 @@ $load['css']['core'][] = 'bootstrap-theme.min';
  */
 $load['css'][] = 'general';
 $load['css'][] = 'home';
+$load['css'][] = 'login-signup';
+
 
 /* --------------------------------------------------
  * assets/js/core/
@@ -48,3 +50,5 @@ $load['js']['controllers'][] = 'footer-controller';
 $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'page-controller';
 $load['js']['controllers'][] = 'login-controller';
+$load['js']['controllers'][] = 'signup-controller';
+

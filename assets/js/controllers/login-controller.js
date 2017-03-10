@@ -1,14 +1,12 @@
 app.controller('LoginController', function($scope, $location, $routeParams, $http){
-	$scope.login = "LOGIN";
-
-	$scope.return;
-
-	$scope.link = function(){
-		$location.path("/page/50");
-	}
-
-	$http.post('system/test/square', {num: 10})
-	.then(function(response){
-		$scope.return = response.data;
-	});
+	$scope.login = function(field) {
+		$http.post('url', field)
+		.then(function(response) {
+			if (response.data.success) {
+				console.log('Usuário logado.');
+			}
+		}).catch(function(error) {
+			console.log('Erro!');
+		});
+	};
 });
