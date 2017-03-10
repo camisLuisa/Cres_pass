@@ -15,14 +15,14 @@
 		 		<div class="form-group">
 		 			<input ng-model="searchInput" type="text class="form-control" placeholder="Digite o nome do produto, marca ou lojinha">
 		 		</div>
-		 		<button type="submit" class="btn btn-default">Buscar</button>
+		 		<button type="submit">Buscar</button>
 			</form>
 		 </div>
 
 		 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-		 		<button ng-click="go('#/login')">Inscrever-se</button>
+		 		<button ng-click="go('/login')">LOGIN</button>
 
-		 		<button ng-click="go('#/signup')">Inscrever-se</button>
+		 		<button ng-click="go('/cadastro')">CADASTRO</button>
 		</div> 	
 	</div>
 	</div>

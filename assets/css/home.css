@@ -3,6 +3,8 @@
 	LIGHT YELLOW		#FFD86B;
 
 */
+
+
 /* INTRO */
 .intro {
 	width: 100%;
@@ -54,3 +56,9 @@
 	text-align: justify;
 } */
 
+/* TREND PRODUCTS */
+
+.trendProducts h1,
+.trendProducts ul {
+	text-align: center;
+}
