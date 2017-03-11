@@ -2,7 +2,7 @@
 		
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 container">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<p>O que voce procura?</p>
 				<ul>
 					<li>Acessórios</li>
