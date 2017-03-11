@@ -3,8 +3,10 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 
 	$scope.search = function(input) {
 		// $http.post('url', input)
-		// .success(function(data){
-		// }).error(function(erro){
+		// .then(function(response){
+		// 	console.log(input);
+		// }).catch(function(erro){
+		// 	console.log(input);
 		// });
 		console.log(input);
 	};
