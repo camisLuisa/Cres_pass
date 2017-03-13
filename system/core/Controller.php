@@ -90,6 +90,7 @@ class Controller
 	function __construct(){
 		session_start();
 		$this->post = json_decode(file_get_contents("php://input"));
+		$this->return = array('success' => TRUE, 'error' => NULL);
 	}
 
 	/**

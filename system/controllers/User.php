@@ -22,7 +22,7 @@ class User extends Controller
 		$data = $this->get_post();
 		//logica base
 		//validar username
-		validateUsername($data['username']);
+		//validateUsername($data['username']);
 		//procura o usuario
 		$this->model['User_model']->select('user',"WHERE username = '".$data['username']."'");
 		//se achou, login, caso n
@@ -30,14 +30,9 @@ class User extends Controller
 			// a fazer
 		}else{
 			//mensagem de erro
-			$return['success'] = FALSE;
-			$return['error'] = "Login inválido.";
+			$this->return['success'] = FALSE;
+			$this->return['error'] = "Login inválido.";
 		}
-		/* Campos usados
-		username
-		password
-		email
-		*/
 	}
 
 	public function signup(){
