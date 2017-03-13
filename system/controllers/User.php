@@ -38,24 +38,37 @@ class User extends Controller
 	public function signup(){
 		// front -> back
 		$data = $this->get_post();
-		//validateUsername
+		
+		/* Validações
+		
 		validateUsername($data['username']);
 		validateEmail($data['email']);
-		//consultar
+
+		*/
+		
+		//Consultar banco de dados
 		$this->model['User_model']->select('user', "WHERE username = '". $data['username'] ."'");
-		//verificação
+		
+		//Verificar TRUE ou FALSE da Consulta
 		if($this->model['User_model']->get_result()){
-			// existe
+			
+			//CASO: Já Existe!
 			$return['success'] = FALSE;
 			$return['error'] = "Não foi possível cadastrar o user";
+
 		}else{
-			//n existe
+			
+			//CASO: Não existe!
+			unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
 			$this->model['User_model']->insert('user', $data);
+
 			if($this->model['User_model']->get_result()){
-				//inseriu okay
+				
+				//CASO: Inserção concluída
+				
 			}
 			else{
-				//deu erro na inserção
+				//CASO: Erro na inserção
 				$return['success'] = FALSE;
 				$return['error'] = "Não foi possível cadastrar o user";
 			}
