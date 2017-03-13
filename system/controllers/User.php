@@ -14,6 +14,7 @@ class User extends Controller
 	{
 		parent::__construct();
 		$this->load_model('User_model');
+		$this->load_lib('Validation');
 	}
 
 
@@ -31,48 +32,56 @@ class User extends Controller
 		}else{
 			//mensagem de erro
 			$this->return['success'] = FALSE;
-			$this->return['error'] = "Login inválido.";
+			$this->return['error'] .= "Login inválido.";
 		}
 	}
 
 	public function signup(){
 		// front -> back
 		$data = $this->get_post();
-		
-		/* Validações
-		
-		validateUsername($data['username']);
-		validateEmail($data['email']);
 
-		*/
-		
-		//Consultar banco de dados
-		$this->model['User_model']->select('user', "WHERE username = '". $data['username'] ."'");
-		
-		//Verificar TRUE ou FALSE da Consulta
-		if($this->model['User_model']->get_result()){
+
+		if($this->lib['Validation']->validateEmail($data['email']) != 1){ // Valida email
+			$this->return['success'] = FALSE;
+			$this->return['error'] .= "Email inválido. ";
 			
-			//CASO: Já Existe!
-			$return['success'] = FALSE;
-			$return['error'] = "Não foi possível cadastrar o user";
-
-		}else{
-			
-			//CASO: Não existe!
-			unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
-			$this->model['User_model']->insert('user', $data);
-
-			if($this->model['User_model']->get_result()){
-				
-				//CASO: Inserção concluída
-				
-			}
-			else{
-				//CASO: Erro na inserção
-				$return['success'] = FALSE;
-				$return['error'] = "Não foi possível cadastrar o user";
-			}
 		}
+		if($this->lib['Validation']->validateUsername($data['username'] != 1)){ //Valida user
+			$this->return['success'] = FALSE;
+			$this->return['error'] .= "Nome de user inválido. ";
+		}
+
+		if($this->return['success'] == TRUE){
+
+			
+			//Consultar banco de dados
+			$this->model['User_model']->select('user', "WHERE username = '". $data['username'] ."'");
+			
+			//Verificar TRUE ou FALSE da Consulta
+			if($this->model['User_model']->get_result()){
+
+				//CASO: Já Existe!
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= "Não foi possível cadastrar o user";
+
+			}else{
+				
+				//CASO: Não existe!
+				unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
+				$this->model['User_model']->insert('user', $data);
+				if($this->model['User_model']->get_result()){
+					//CASO: Inserção concluída
+				}
+				else{
+					//CASO: Erro na inserção
+					$this->return['success'] = FALSE;
+					$this->return['error'] .= "Não foi possível cadastrar o user";
+				}
+			}		
+
+		}
+
+			
 	}
 
 }
