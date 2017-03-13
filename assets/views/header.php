@@ -2,7 +2,7 @@
 <div ng-controller="HeaderController">
 	<div class="container-fluid">	
 		<div class="row">	
-			<nav class="navbar navbar-default"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
+			<nav class="navbar navbar-default text-center"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
 			
 				<div class="container">
 					<div class="row">
