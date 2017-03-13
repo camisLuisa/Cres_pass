@@ -15,14 +15,14 @@
 							 		<div class="form-group">
 							 			<input ng-model="searchInput" type="text class="form-control" placeholder="Procure">
 							 		</div>
-							 		<button type="submit">Buscar</button>
+							 		<button class="btn btn-primary" type="submit">Buscar</button>
 							</form>
 						 </div>
 
 						 <div class="col-md-4">
-						 		<button ng-click="go('/login')">LOGIN</button>
+						 		<button class="btn btn-primary" ng-click="go('/login')">LOGIN</button>
 
-						 		<button ng-click="go('/cadastro')">CADASTRO</button>
+						 		<button class="btn btn-primary" ng-click="go('/cadastro')">CADASTRO</button>
 						</div> 
 					</div>
 				</div>	
