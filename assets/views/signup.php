@@ -8,7 +8,7 @@
 				<input type="email" class="form-control" id="email" placeholder="Email" required ng-model="field.email">
 				<input type="password" class="form-control" id="password" placeholder="Senha" required ng-model="field.password">
 				<input type="password" class="form-control" id="passwordcheck" placeholder="Confirmar senha" required ng-model="field.passwordcheck">
-				<button type="submit">CADASTRAR</button>
+				<button class="btn btn-primary" type="submit">CADASTRAR</button>
 			</form>
 		</div>	
 	</div>

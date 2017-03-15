@@ -6,8 +6,9 @@
 			<form ng-submit="login(field)">
 				<input type="text" class="form-control" id="user" placeholder="Usuário" required ng-model="field.username">
 				<input type="password" class="form-control" id="password" placeholder="Senha" required ng-model="field.password">
-				<button type="submit">LOGIN</button>
+				<button class="btn btn-primary" type="submit">LOGIN</button>
 			</form>
 		</div>
 		<div class="col-md-4"></div>
 	</div>
+</div>
