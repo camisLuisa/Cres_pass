@@ -87,12 +87,9 @@ class User extends Controller
 			$this->return['error'] .= "Nome de user inválido. ";
 		}
 
-
-
-
-
+		// Caso algum dos casos de invalidação, tenham ocorrido ele cancela o signup e retorna a mensagem de erro referente.
 		if($this->return['success'] == FALSE){
-			echo "Saindo da insercao.   ";
+			echo "Saindo da inserção. ";
 			return;
 		}
 
