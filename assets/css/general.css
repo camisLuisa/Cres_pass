@@ -57,3 +57,18 @@ button:hover {
 .dropdown:hover .dropbtn {/*cor do botão que muda quando passa o mouse*/
     background-color: #f1f1f1;
 }
+
+/*---menu-bar afix---*/
+
+ .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+
+  .navbar {
+    z-index: 3;
+  }
