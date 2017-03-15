@@ -72,3 +72,10 @@ button:hover {
   .navbar {
     z-index: 3;
   }
+
+  .imageCartao{/*classe da imagem do cartão depois farei melhor camila*/
+    background-image: url(http://www.bb.com.br/docs/pub/inst/img/bandeirascartoes.png);
+    background-size: cover;
+    width: 10;
+    height: 10;
+  }
