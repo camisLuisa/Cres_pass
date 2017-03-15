@@ -6,8 +6,8 @@
 		<div class="col-md-6 introTxt">
 			<h1>Lorem Ipsum</h1>
 			<p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.</p>
-			<button ng-click="go('/cadastro')">QUERO COMPRAR</button>
-			<button ng-click="go('/cadastro')">QUERO VENDER</button>
+			<a class="btn btn-primary" ng-click="go('/cadastro')">QUERO COMPRAR</a>
+			<a class="btn btn-primary" ng-click="go('/cadastro')">QUERO VENDER</a>
 		</div>
 	</div>
 </div>
