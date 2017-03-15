@@ -12,8 +12,8 @@
 					
 	<div class="container-fluid">
 		<div class="row">	
-			<div class="col-md-12">
 				<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+					<div class="col-md-4">
 					<ul class="nav navbar-nav">
 						<li class="dropdown"><a class="dropbtn" data-toggle="dropdown" href="#">Produtos<span class="caret"></span></a>
 					        <ul class="dropdown-content">
@@ -30,19 +30,30 @@
 					        </ul>
 					      </li>
 						<li><a href="#">Lojinhas</a></li>
-						<li><a class="btn btn-primary" data-toggle="modal" data-target="#loginModal">login</a></li>
-						<li><a ng-click="go('/cadastro')">cadastro</a></li>
+						
 					</ul>
+					</div>
+
+					<div class="col-md-4">
 					<form class="navbar-form" ng-submit="search(searchInput)">
 				 		<div class="form-group">
 				 			<input ng-model="searchInput" type="text class="form-control" placeholder="Procure">
 				 		</div>
 				 		<button type="submit">Buscar</button>
 					</form>
+					</div>
+					
 
+					<div class="col-md-4">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="btn btn-primary" data-toggle="modal" data-target="#loginModal">login</a></li>
+						<li><a ng-click="go('/cadastro')">cadastro</a></li>
+					</ul>
+					</div>
+					
 
 				</nav>
-			</div>
+			
 		</div>
 	</div>
 
