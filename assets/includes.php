@@ -23,7 +23,7 @@ $load['css']['core'][] = 'bootstrap-theme.min';
 $load['css'][] = 'general';
 $load['css'][] = 'home';
 $load['css'][] = 'login-signup';
-
+$load['css'][] = 'header-footer';
 
 /* --------------------------------------------------
  * assets/js/core/

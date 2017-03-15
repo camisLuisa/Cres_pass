@@ -24,7 +24,7 @@
 	})
 	.when('/admin', {
 		templateUrl: viewsPath+'admin.php',
-		controller: 'AdminController'
+		controller: ''
 	})
 	.when('/page/:var', {
 		templateUrl: viewsPath+'page.php',

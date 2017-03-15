@@ -2,7 +2,7 @@
 <div ng-controller="HeaderController">
 	<div class="container-fluid">	
 		<div class="row">	
-			<nav class="navbar navbar-default text-center"><!-- queria por o navbar fixed mas aconteceu um problema semelhante a algo que alyson uma vez falou... perguntar a ele como resolver -->
+			<nav class="navbar navbar-default text-center">
 
 				<div class="container">
 					<div class="row">
@@ -25,10 +25,8 @@
 							<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="X"><span aria-hidden="true">&times;</span></button>
-										</div>
 										<div class="modal-body">
+											<button type="button" class="close" data-dismiss="modal" aria-label="X"><span aria-hidden="true">&times;</span></button>
 											<div ng-controller="LoginController">
 												<h1>LOGIN</h1>
 												<form ng-submit="login(field)">
