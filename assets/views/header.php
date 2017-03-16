@@ -20,7 +20,7 @@
 							</form>
 						</div>
 						<!-- LOGIN BUTTON & MODAL -->
-						<div class="col-md-4">
+						<div class="col-md-4" ng-controller="LoginController">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">LOGIN</button>
 							<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
 								<div class="modal-dialog" role="document">
