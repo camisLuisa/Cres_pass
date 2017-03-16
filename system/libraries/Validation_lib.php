@@ -66,7 +66,7 @@ class Validation_lib extends Lib
 			$status = $this->validateNumber($data['tel_1']);
 			if(!$status){
 				$return['success'] = FALSE;
-				$return['error'] .= $data['tel_1'] . " contém formato incorreto. ";
+				$return['error'] .= $data['tel_1'] . " contem formato incorreto. ";
 			}
 		}
 		if(isset($data['ddd_2'])){
@@ -80,7 +80,7 @@ class Validation_lib extends Lib
 			$status = $this->validateNumber($data['tel_2']);
 			if(!$status){
 				$return['success'] = FALSE;
-				$return['error'] .= $data['tel_2'] . " contém formato incorreto. ";
+				$return['error'] .= $data['tel_2'] . " contem formato incorreto. ";
 			}
 		}
 		if(isset($data['address'])){
@@ -101,13 +101,12 @@ class Validation_lib extends Lib
 			$status = $this->validateReference($data['complement']);
 			if(!$status){
 				$return['success'] = FALSE;
-				$return['error'] .= $data['complement'] . " contem caracteres inválidos.";
+				$return['error'] .= $data['complement'] . " contem caracteres invalidos.";
 			}
 		}
 
 		return $return;
 	}
-
 
 	public function validateEmail($email){
 
@@ -125,52 +124,48 @@ class Validation_lib extends Lib
   }
 
  	public function validateName($name){
-    	//    Explaining
-    	//padrao contém a seguinte expressão, caso algo não pertencente ao grupo
-    	//a - z será verdadeiro, logo quando for verdadeiro não deverá ser aceito
-        // assim retornando o inverso.
- 		$padrao = "/[^a-z]/";
-    	return !preg_match($padrao, $name);
-
+ 		$padrao = "/\A[a-z]+\z/";
+    return preg_match($padrao, $name);
  	}
 
  	public function validateCEP($cep){
-        //Se não obedecer o formato 5 números hífen e 3 números, ele torna inválido!
-      return preg_match("/[0-9]{5}\-?[0-9]{3}/", $cep);
+      //Se não obedecer o formato 5 números hífen e 3 números, ele torna inválido!
+			$padrao = "/[0-9]{5}\-?[0-9]{3}/";
+      return preg_match($padrao, $cep);
  	}
 
 	public function validateUsername($user){
-    	return !preg_match("/[*]/", $user);
+			$padrao = "/\A[a-z]+([a-z\_\.]{1,}?)\z/";
+    	return preg_match($padrao, $user);
  	}
 
 	public function validateCPF($cpf){
-		return preg_match("^[0-9]{11}^", $cpf);
+		$padrao = "/\A\d{11}\z/";
+		return preg_match($padrao, $cpf);;
+
 	}
 
 	public function validatePhone($telefone){
-		return preg_match("/[0-9]{8,9}/", $telefone);
+		return preg_match("/\A[0-9]{8,9}$\z/", $telefone);
 	}
 
 	public function validateDDD($ddd){
-		return
+		$padrao = "/\A[0-9]{2}\z/";
+		return preg_match($padrao, $ddd);
 	}
 
 	public function validateAddress($adress){
-		return preg_match("^[a-z]{5,}^", $adress);
+		$padrao = "/\A[A-z\ ]*\z/";
+		return preg_match($padrao, $adress);
 	}
 
 	public function validateNumber($number){
-		return preg_match("^[0-9]{8,9}^", $number);
+		return preg_match("/\A\d{0,6}\z/", $number);
 	}
 
-
 	public function validateReference($ref){
-		// Same method can be used to validate either References or Complement
-		// Since both of them can contain numbers and letters like Apt 123
-		// Se o conteúdo não pertencer aos grupos de A <-> Z | a <-> z e 0 a 9 | podendo conter espaços
-		// ele retorna verdadeiro, portanto retornaremos o inverso, para informar que não foi validado.
-		// e quando for validado seria FALSE retornado como TRUE
-		return !preg_match("[^a-zA-Z0-9 ]", $ref);
+		$padrao = "/\A[A-z0-9 ]*\z/";
+		return preg_match($padrao, $ref);
 	}
 
 }

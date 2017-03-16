@@ -46,12 +46,13 @@ class User extends Controller
 			'cep' => '33333333',
 			'cpf' => '11111111111',
 			'ddd_1' => '1222',
-			'tel_1' => '1234555678',
+			'tel_1' => '1234567891',
 			'ddd_2' => '12',
 			'tel_2' => '12345678',
 			'address' => 'rua trabson xampson',
 			'reference' => 'esquina com a 5 rua',
-			'complement' => '**apt 123'	);
+			'complement' => '**apt 123',
+			'username' => 'l_a.treta');
 		$this->return = $this->lib['Validation_lib']->callForValidation($teste);
 	}
 
