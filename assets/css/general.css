@@ -5,22 +5,6 @@
 
 a {text-decoration: none !important;}
 
-button {
-	padding: 10px;
-	margin-right: 5%;
-	border: 2px solid #FFD86B;
-	background-color: transparent;
-	color: #FFD86B;
-	border-radius: 5px;
-	font-weight: 600;
-}
-
-button:hover {
-	background-color: #FFD86B;
-	color: white;
-	transition: color 1s, background-color 1s;
-}
-
 /* DROPDOWN ON HOVER */
 .dropbtn {/*visual botão principal*/
     color: white;

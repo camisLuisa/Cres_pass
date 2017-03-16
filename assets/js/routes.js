@@ -14,13 +14,13 @@
 		templateUrl: viewsPath+'home.php',
 		controller: 'HomeController'
 	})
-	.when('/login', {
-		templateUrl: viewsPath+'login.php',
-		controller: 'LoginController'
-	})
 	.when('/cadastro', {
 		templateUrl: viewsPath+'signup.php',
 		controller: 'SignUpController'
+	})
+	.when('/admin', {
+		templateUrl: viewsPath+'admin.php',
+		controller: 'LoginController'
 	})
 	.when('/page/:var', {
 		templateUrl: viewsPath+'page.php',
