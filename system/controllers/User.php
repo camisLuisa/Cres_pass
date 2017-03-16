@@ -22,6 +22,8 @@ class User extends Controller
 		// pegar os dados do front end
 		$data = $this->get_post();
 
+		$this->result = $this->lib['Validation_lib']->callForValidation($data);
+
 		//procura o usuario
 		$this->model['User_model']->select('user',"WHERE email = '".$data['email']."'");
 		//se achou, login, caso n
@@ -36,34 +38,18 @@ class User extends Controller
 	}
 
 	public function testes(){
-		$testenome = $this->lib['Validation_lib']->validateName('yvesgregorio');
-		$testeemail = $this->lib['Validation_lib']->validateEmail('y_y_@gmail.com');
-		$testeusername = $this->lib['Validation_lib']->validateUsername('y***ves');
-		$testecep = $this->lib['Validation_lib']->validateCEP('11111111');
-		echo "<br>Testando nome<br>";
-		if($testenome){ // Caso não tenha e esteja okay
-			echo "Tudo certo!";
-		}else{ // Caso tenha
-			echo "Contém caracteres inválidos!";
-		}
-		echo "<br>Testando Email<br>";
-		if($testeemail){ // Caso não tenha e esteja okay
-			echo "Tudo certo!";
-		}else{ // Caso tenha
-			echo "Contém caracteres inválidos!";
-		}
-		echo "<br>Testando username<br>";
-		if($testeusername){ // Caso não tenha e esteja okay
-			echo "Tudo certo!";
-		}else{ // Caso tenha
-			echo "Contém caracteres inválidos!";
-		}
-		echo "<br>Testando CEP<br>";
-		if($testecep){ // Caso não tenha e esteja okay
-			echo "Tudo certo!";
-		}else{ // Caso tenha
-			echo "Formato inválido!";
-		}
+
+		$teste = array(
+			'name' => 'latreta',
+			'last_name' => 'sobrenome',
+			'email' => 'y@google.com.br',
+			'cep' => '33333-333',
+			'cpf' => '11111111111',
+			'number' => '12345678',
+			'address' => 'rua trabson xampson',
+			'reference' => 'esquina com a 5 rua',
+			'complement' => '**apt 123'	);
+		$this->return = $this->lib['Validation_lib']->callForValidation($teste);
 	}
 
 
@@ -71,12 +57,7 @@ class User extends Controller
 		// front -> back
 		$data = $this->get_post();
 
-
-		if(!$this->lib['Validation_lib']->validateEmail($data['email'])){ // Valida email
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Email inválido. ";
-			
-		}
+		$this->return = $this->lib['Validation_lib']->callForValidation($data);
 
 		// Caso algum dos casos de invalidação, tenham ocorrido ele cancela o signup e retorna a mensagem de erro referente.
 		if($this->return['success'] == FALSE){
@@ -86,7 +67,7 @@ class User extends Controller
 
 		//Consultar banco de dados
 		$this->model['User_model']->select('user', "WHERE email = '". $data['email'] ."'");
-			
+
 		//Verificar TRUE ou FALSE da Consulta
 		if($this->model['User_model']->get_result()){
 
@@ -95,7 +76,7 @@ class User extends Controller
 			$this->return['error'] .= "Não foi possível cadastrar o user";
 
 		}else{
-				
+
 				//CASO: Não existe!
 			unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
 			$this->model['User_model']->insert('user', $data);
