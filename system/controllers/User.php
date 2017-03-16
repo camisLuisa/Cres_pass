@@ -43,6 +43,7 @@ class User extends Controller
 			'name' => 'latreta',
 			'last_name' => 'sobrenome',
 			'email' => 'y@google.com.br',
+			'rg' => '1234567',
 			'cep' => '33333333',
 			'cpf' => '11111111111',
 			'ddd_1' => '1222',

@@ -105,8 +105,20 @@ class Validation_lib extends Lib
 				$return['error'] .= $data['complement'] . " contem caracteres invalidos.";
 			}
 		}
+		if(isset($data['rg'])){
+			$status = $this->validateRG($data['rg']);
+			if(!$status){
+				$return['success'] = FALSE;
+				$return['error'] .= "O RG " . $data['rg'] . " esta no formato incorreto. ";
+			}
+		}
 
 		return $return;
+	}
+
+	public function validateRG($rg){
+		$padrao = "/\A[0-9]{7}\z/";
+		return preg_match($padrao, $rg);
 	}
 
 	public function validateEmail($email){
