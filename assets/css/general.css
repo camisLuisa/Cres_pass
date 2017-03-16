@@ -42,6 +42,24 @@ a {text-decoration: none !important;}
     background-color: #f1f1f1;
 }
 
-.modal-body {
-    padding: 50px;
-}
+/*---menu-bar afix---*/
+
+ .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+
+  .navbar {
+    z-index: 3;
+  }
+
+  .imageCartao{/*classe da imagem do cartão depois farei melhor camila*/
+    background-image: url(http://www.bb.com.br/docs/pub/inst/img/bandeirascartoes.png);
+    background-size: cover;
+    width: 10;
+    height: 10;
+  }

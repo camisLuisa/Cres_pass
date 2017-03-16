@@ -1,7 +1,7 @@
 <?php
 defined('BASE_PATH') OR exit('No direct script access allowed');
 
-class Validation extends Lib
+class Validation_lib extends Lib
 {
 	function __construct()
 	{
@@ -11,8 +11,8 @@ class Validation extends Lib
 	public function validateEmail($email){
 		
         // De a-z,0-9, ponto e underscore(underline) com @
-        $conta = "^[a-z][a-zA-Z0-9\._-]+@";
-        // Provedor do email
+        $conta = "^[a-z][a-z\._-]+@";
+        // Provedor do email apenas letras
         $provedor = "[a-zA-Z0-9]+.";
         // com.br e com
         $extension = "([com]{3})(\.([br]{2}))?^";
@@ -29,15 +29,15 @@ class Validation extends Lib
  	public function validateName($name){
     	//    Explaining
     	//padrao contém a seguinte expressão, caso algo não pertencente ao grupo
-    	//a - z será verdadeiro, logo quando for verdadeiro não deverá ser validado, retornando o 
-    	//inverso.
+    	//a - z será verdadeiro, logo quando for verdadeiro não deverá ser aceito
+        // assim retornando o inverso.
  		$padrao = "/[^a-z]/";
     	return !preg_match($padrao, $name);
 
  	}
 
  	public function validateCEP($cep){
+        //Se não obedecer o formato 5 números hífen e 3 números, ele torna inválido!
       return preg_match("/[0-9]{5}\-[0-9]{3}/", $cep);
-  		//^\d{5}\-\d{3}$ formato de CEP
  	}
 }
