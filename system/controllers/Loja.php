@@ -14,7 +14,7 @@ class Loja extends Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load_model('Loja_model');
-		$this->load_lib('Validation');
+		$this->load_lib('Validation_lib');
 	}
 
 	public function testes(){
@@ -24,7 +24,7 @@ class Loja extends Controller{
 	public function criarLoja(){
 //		$data = $this->get_post(); JSON SET
 		$data['name'] = 'teste';
-		$teste = $this->lib['Validation']->validateName($data['name']);
+		$teste = $this->lib['Validation_lib']->validateName($data['name']);
 
 		if($this->model['Loja_model']->select('store', $data['name'])){
 			$this->return['success'] = FALSE;

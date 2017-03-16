@@ -26,9 +26,30 @@ INSERT INTO `test` (`test_name`) VALUES ('teste1'),('teste2'),('teste3'),('teste
  */
 CREATE TABLE IF NOT EXISTS `user`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`username` VARCHAR(50) NOT NULL UNIQUE,
+	/* Login infos */
 	`email` VARCHAR(50) NOT NULL UNIQUE,
-	`password` VARCHAR(50) NOT NULL
+	`password` VARCHAR(50) NOT NULL,
+	/* Personal infos */
+	`name` VARCHAR(50) NOT NULL,
+	`last_name` VARCHAR(50) NOT NULL,
+	`type` ENUM('pai', 'mae', 'outro') NOT NULL,
+	`cpf` VARCHAR(15) NOT NULL,
+	`rg` VARCHAR(15) NOT NULL,
+	`ddd_1` TINYINT(2) NOT NULL,
+	`tel_1` INT(11) NOT NULL,
+	`ddd_2` TINYINT(2) NULL DEFAULT NULL,
+	`tel_2` INT(11) NULL DEFAULT NULL,
+	/* Adress */
+	`cep` VARCHAR(50) NOT NULL,
+	`street` VARCHAR(50) NOT NULL,
+	`number` VARCHAR(50) NOT NULL,
+	`complement` VARCHAR(50) NOT NULL,
+	`neighborhood` VARCHAR(50) NOT NULL,
+	`city` VARCHAR(50) NOT NULL,
+	`state` VARCHAR(50) NOT NULL,
+	`reference` VARCHAR(50) NOT NULL,
+	/* Additional */
+	`signup_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 /* --------------------------------------------------
