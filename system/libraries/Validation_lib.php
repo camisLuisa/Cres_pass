@@ -55,11 +55,32 @@ class Validation_lib extends Lib
 				$return['error'] .= $data['cpf'] . " contem formato incorreto. ";
 			}
 		}
-		if(isset($data['number'])){
-			$status = $this->validateNumber($data['number']);
+		if(isset($data['ddd_1'])){
+			$status = $this->validateDDD($data['ddd_1']);
 			if(!$status){
 				$return['success'] = FALSE;
-				$return['error'] .= $data['number'] . " contém formato incorreto. ";
+				$return['error'] .= "O DDD " . $data['ddd_1'] ." do telefone principal e invalido. ";
+			}
+		}
+		if(isset($data['tel_1'])){
+			$status = $this->validateNumber($data['tel_1']);
+			if(!$status){
+				$return['success'] = FALSE;
+				$return['error'] .= $data['tel_1'] . " contém formato incorreto. ";
+			}
+		}
+		if(isset($data['ddd_2'])){
+			$status = $this->validateDDD($data['ddd_2']);
+			if(!$status){
+				$return['success'] = FALSE;
+				$return['error'] .= "O DDD " . $data['ddd_2'] ." do telefone opcional e invalido. ";
+			}
+		}
+		if(isset($data['tel_2'])){
+			$status = $this->validateNumber($data['tel_2']);
+			if(!$status){
+				$return['success'] = FALSE;
+				$return['error'] .= $data['tel_2'] . " contém formato incorreto. ";
 			}
 		}
 		if(isset($data['address'])){
@@ -115,7 +136,7 @@ class Validation_lib extends Lib
 
  	public function validateCEP($cep){
         //Se não obedecer o formato 5 números hífen e 3 números, ele torna inválido!
-      return preg_match("/[0-9]{5}\-[0-9]{3}/", $cep);
+      return preg_match("/[0-9]{5}\-?[0-9]{3}/", $cep);
  	}
 
 	public function validateUsername($user){
@@ -127,11 +148,11 @@ class Validation_lib extends Lib
 	}
 
 	public function validatePhone($telefone){
-		return preg_match("^[0-9]{9}^", $telefone);
+		return preg_match("/[0-9]{8,9}/", $telefone);
 	}
 
 	public function validateDDD($ddd){
-		return preg_match("^[0-9]{2}^", $ddd);
+		return
 	}
 
 	public function validateAddress($adress){
