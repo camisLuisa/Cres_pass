@@ -79,6 +79,7 @@ define('ASSETS_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR.$assets_folder.DIREC
 require_once ASSETS_PATH.$include_file.'.php';
 
 ?>
+<!DOCTYPE html>
 <html ng-app="app">
 <head>
 	<meta charset="utf-8">
