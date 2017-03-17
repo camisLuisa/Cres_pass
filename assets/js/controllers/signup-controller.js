@@ -1,4 +1,5 @@
 app.controller('SignUpController', function($scope, $location, $routeParams, $http){
+
 	$scope.signup = function(field) {
 		$http.post('system/user/signup', field)
 		.then(function(response) {
