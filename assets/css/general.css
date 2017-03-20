@@ -63,3 +63,9 @@ a {text-decoration: none !important;}
     width: 10;
     height: 10;
   }
+
+  /*signup*/
+
+input.ng-touched.ng-invalid {
+  border-color: #F99;
+}
