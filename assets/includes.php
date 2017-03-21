@@ -34,6 +34,7 @@ $load['js']['core'][] = 'angular.min';
 $load['js']['core'][] = 'angular-route.min';
 $load['js']['core'][] = 'jquery.min';
 $load['js']['core'][] = 'bootstrap.min';
+$load['js']['core'][] = 'ngMask.min';
 
 /* --------------------------------------------------
  * assets/js/
@@ -52,4 +53,6 @@ $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'page-controller';
 $load['js']['controllers'][] = 'login-controller';
 $load['js']['controllers'][] = 'signup-controller';
+
+
 
