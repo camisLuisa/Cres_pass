@@ -21,42 +21,42 @@
 					<span ng-if="form1.email1.$error.email">Este não é um email valido</span>
 				</div>
 				
-				<input name="cep1" type="text" class="form-control" id="cep" placeholder="CEP" maxlength="8" minlength="8" required pattern="[0-9]*" title="Insira apenas números" ng-model="cep">
+				<input name="cep1" type="text" class="form-control" id="cep" placeholder="CEP" required title="Insira apenas números" ng-model="cep" mask ="99999999">
 				<div ng-if="(form1.cep1.$touched || form1.$submitted) && form1.cep1.$invalid">
 					<span ng-if="form1.cep1.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="cpf1" type="text" class="form-control" id="cpf" placeholder="CPF" maxlength="14" minlength="14" required pattern="[0-9]*" title="Insira apenas números" ng-model="cpf"">
+				<input name="cpf1" type="text" class="form-control" id="cpf" placeholder="CPF" required ng-model="cpf" mask ="99999999999">
 				<div ng-if="(form1.cpf1.$touched || form1.$submitted) && form1.cpf1.$invalid">
 					<span ng-if="form1.cpf1.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="ddd11" type="text" class="form-control" id="ddd1" maxlength="2" placeholder="DDD 1" required pattern="[0-9]*" title="Insira apenas números" ng-model="ddd_1">
+				<input name="ddd11" type="text" class="form-control" id="ddd1" placeholder="DDD 1" required ng-model="ddd_1" mask ="999">
 				<div ng-if="(form1.ddd11.$touched || form1.$submitted) && form1.ddd11.$invalid">
 					<span ng-if="form1.ddd11.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="tel11" type="tel" class="form-control" id="tel1" maxlength="11" placeholder="telefone 1" required pattern="[0-9]*" title="Insira apenas números" ng-model="tel_1">
+				<input name="tel11" type="tel" class="form-control" id="tel1" maxlength="11" placeholder="telefone 1" required ng-model="tel_1" mask ="999999999">
 				<div ng-if="(form1.tel11.$touched || form1.$submitted) && form1.tel11.$invalid">
 					<span ng-if="form1.tel11.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="ddd22" type="text" class="form-control" id="ddd2" maxlength="2" placeholder="DDD 2" required pattern="[0-9]*" title="Insira apenas números" ng-model="ddd_2">
+				<input name="ddd22" type="text" class="form-control" id="ddd2" placeholder="DDD 2" required  ng-model="ddd_2" mask ="999">
 				<div ng-if="(form1.ddd22.$touched || form1.$submitted) && form1.ddd22.$invalid">
 					<span ng-if="form1.ddd22.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="tel22" type="tel" class="form-control" id="tel2" maxlength="11" placeholder="telefone 2" required pattern="[0-9]*" title="Insira apenas números" ng-model="tel_2">
+				<input name="tel22" type="tel" class="form-control" id="tel2" maxlength="11" placeholder="telefone 2" required ng-model="tel_2" mask ="999999999">
 				<div ng-if="(form1.tel22.$touched || form1.$submitted) && form1.tel22.$invalid">
 					<span ng-if="form1.tel22.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="street1" type="text" class="form-control" id="street" maxlength="50" placeholder="Rua" required pattern="[0-9]*" ng-model="street">
+				<input name="street1" type="text" class="form-control" id="street" maxlength="50" placeholder="Rua" required ng-model="street">
 				<div ng-if="(form1.street1.$touched || form1.$submitted) && form1.street1.$invalid">
 					<span ng-if="form1.street1.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="number1" type="text" class="form-control" id="number" maxlength="50" placeholder="Número" required pattern="[0-9]*" title="Insira apenas números" ng-model="number">
+				<input name="number1" type="text" class="form-control" id="number" maxlength="50" placeholder="Número" required title="Insira apenas números" ng-model="number" mask ="999">
 				<div ng-if="(form1.number1.$touched || form1.$submitted) && form1.number1.$invalid">
 					<span ng-if="form1.number1.$error.required">Este campo é obrigatório</span>
 				</div>
@@ -80,7 +80,7 @@
 					<span ng-if="form1.state1.$error.required">Este campo é obrigatório</span>
 				</div>
 
-				<input name="rg1" type="text" class="form-control" id="rg" maxlength="50" placeholder="RG" required ng-model="rg">
+				<input name="rg1" type="text" class="form-control" id="rg" maxlength="50" placeholder="RG" required ng-model="rg" mask ="99999999">
 				<div ng-if="(form1.rg1.$touched || form1.$submitted) && form1.rg1.$invalid">
 					<span ng-if="form1.rg1.$error.required">Este campo é obrigatório</span>
 				</div>
