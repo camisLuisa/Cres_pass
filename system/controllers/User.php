@@ -15,6 +15,7 @@ class User extends Controller
 		parent::__construct();
 		$this->load_model('User_model');
 		$this->load_lib('Validation_lib');
+		$this->return = array('success' => true, 'error' => '');
 	}
 
 
@@ -53,11 +54,11 @@ class User extends Controller
 			'tel_1' => '1234567891',
 			'ddd_2' => '12',
 			'tel_2' => '12345678',
-			'address' => 'rua trabson xampson',
+			'street' => 'rua trabson xampson',
 			'reference' => 'esquina com a 5 rua',
-			'complement' => '**apt 123',
-			'username' => 'l_a.treta');
-		$this->return = $this->lib['Validation_lib']->callForValidation($teste);
+			'complement' => '**apt 123');
+		//$this->callForValidation($teste);
+		//$this->signup($teste);
 	}
 
 
@@ -65,7 +66,7 @@ class User extends Controller
 		// front -> back
 		$data = $this->get_post();
 
-		$this->return = $this->lib['Validation_lib']->callForValidation($data);
+		$this->return = $this->callForValidation($data);
 
 		// Caso algum dos casos de invalidação, tenham ocorrido ele cancela o signup e retorna a mensagem de erro referente.
 		if($this->return['success'] == FALSE){
@@ -90,6 +91,7 @@ class User extends Controller
 			$this->model['User_model']->insert('user', $data);
 			if($this->model['User_model']->get_result()){
 					//CASO: Inserção concluída
+				$this->return['error'] .= "Insercao concluida.";
 			}
 			else{
 				//CASO: Erro na inserção
@@ -99,5 +101,111 @@ class User extends Controller
 		}
 	}
 
+
+	public function callForValidation($data){
+		// Creates a array like $this->return from controller to return it with compatibility
+		//Simple process, it verifies if the array $data contains a defined key
+		// if it's true, it validates his content and adds any error messages that it needs
+		// then return the array to the controller used to show the error messages
+		if(isset($data['name'])){
+			$status = $this->lib['Validation_lib']->validateName($data['name']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['name'] . " contem caracteres invalidos. ";
+			}
+		}
+		if(isset($data['last_name'])){
+			$status = $this->lib['Validation_lib']->validateName($data['last_name']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['last_name'] . " contem caracteres invalidos. ";
+			}
+		}
+		if(isset($data['username'])){
+			$status = $this->lib['Validation_lib']->validateUsername($data['username']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['username'] . " contem caracteres invalidos";
+			}
+		}
+		if(isset($data['email'])){
+			$status = $this->lib['Validation_lib']->validateEmail($data['email']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['email'] . " contem caracteres invalidos. ";
+			}
+		}
+		if(isset($data['cep'])){
+			$status = $this->lib['Validation_lib']->validateCEP($data['cep']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['cep'] . " nao e valido. ";
+			}
+		}
+		if(isset($data['cpf'])){
+			$status = $this->lib['Validation_lib']->validateCPF($data['cpf']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['cpf'] . " contem formato incorreto. ";
+			}
+		}
+		if(isset($data['ddd_1'])){
+			$status = $this->lib['Validation_lib']->validateDDD($data['ddd_1']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= "O DDD " . $data['ddd_1'] ." do telefone principal e invalido. ";
+			}
+		}
+		if(isset($data['tel_1'])){
+			$status = $this->lib['Validation_lib']->validateNumber($data['tel_1']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['tel_1'] . " contem formato incorreto. ";
+			}
+		}
+		if(isset($data['ddd_2'])){
+			$status = $this->lib['Validation_lib']->validateDDD($data['ddd_2']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= "O DDD " . $data['ddd_2'] ." do telefone opcional e invalido. ";
+			}
+		}
+		if(isset($data['tel_2'])){
+			$status = $this->lib['Validation_lib']->validateNumber($data['tel_2']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['tel_2'] . " contem formato incorreto. ";
+			}
+		}
+		if(isset($data['address'])){
+			$status = $this->lib['Validation_lib']->validateAddress($data['address']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['address'] . " contem caracteres inválidos. ";
+			}
+		}
+		if(isset($data['reference'])){
+			$status = $this->lib['Validation_lib']->validateReference($data['reference']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['reference'] . " contem caracteres inválidos.";
+			}
+		}
+		if(isset($data['complement'])){
+			$status = $this->lib['Validation_lib']->validateReference($data['complement']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= $data['complement'] . " contem caracteres invalidos.";
+			}
+		}
+		if(isset($data['rg'])){
+			$status = $this->lib['Validation_lib']->validateRG($data['rg']);
+			if(!$status){
+				$this->return['success'] = FALSE;
+				$this->return['error'] .= "O RG " . $data['rg'] . " esta no formato incorreto. ";
+			}
+		}
+
+	}
 }
 ?>

@@ -19,7 +19,7 @@ class Loja extends Controller{
 
 	public function testes(){
 
-		$_SESSION['user_id'] = 11;
+		$_SESSION['user_id'] = 1;
 		//session_unset();
 		$this->criarLoja();
 	}
@@ -33,18 +33,18 @@ class Loja extends Controller{
 		}else{	// Entrou e vai criar
 
 			$lojaExemplo = array('name' => 'teste2'); // loja stub
-			if(!$this->verifyStore($lojaExemplo)){ // Verificação de existência da loja 
+			if($this->verifyStore($lojaExemplo)){ // Verificação de existência da loja 
 				$this->setReturn(array('status'=> false, 'msg' => 'The store already exists.'));
-				return; // Recebe o Id da loja adicionada
+				 // Recebe o Id da loja adicionada
 			}
-			if(!$this->verifyUserStore($_SESSION['user_id'])){ // Verifica se o usuário já possui loja
+			if($this->verifyUserStore($_SESSION['user_id'])){ // Verifica se o usuário já possui loja
 					$this->setReturn(array('status' => false, 'msg' => 'User already have a store.'));
-					return;
 			}else{
 					$this->model['Loja_model']->insert('store', $lojaExemplo);
 					$lojaIdentificador = $this->model['Loja_model']->get_result();
-					$userStore = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaIdentificador);
+					$userStore = array('user_id' => $id, 'store_id' => $lojaIdentificador);
 					$this->model['Loja_model']->insert('user_store', $userStore);
+					$this->setReturn(array('status'=> true, 'msg' => "Everything is fine."));
 			}
 				
 		}
@@ -54,19 +54,10 @@ class Loja extends Controller{
 	//VERIFICACAO EM DB DAS LOJAS
 
 	private function verifyUserStore($store){
-		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "'")){
-			return true;
-		}else{
-			return false;
-		}
+		return $this->model['Loja_model']->select('user_store', "WHERE user_id = '" .$store. "'");
 	}
 	private function verifyStore($store){
-		 $status = $this->model['Loja_model']->select('store', "WHERE name = '" . $store['name'] . "'");
-		 if($status){
-		 	return true;
-		 }else{
-		 	return false;
-		 }
+		 return $this->model['Loja_model']->select('store', "WHERE name = '" . $store['name'] . "'");
 	}
 
 	//Metodo para setar o $this->return apenas por strings
