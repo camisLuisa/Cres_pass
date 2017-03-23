@@ -19,42 +19,57 @@ class Loja extends Controller{
 
 	public function testes(){
 
-		$_SESSION['user_id'] = 10;
+		$_SESSION['user_id'] = 11;
+		//session_unset();
 		$this->criarLoja();
 	}
 
 	public function criarLoja(){
-		//$data = $this->get_post(); // JSON NOT SET
-		if(!isset($_SESSION['user_id'])){
-			$this->setReturn(array('status'=> false, 'msg' => 'Sessao inexistente.'));
+		$data = $this->get_post(); // JSON NOT SET
+		$id = $_SESSION['user_id'];
+		if(!isset($id)){
+			$this->setReturn(array('status'=> false, 'msg' => 'Non existent session.'));
 			return;
 		}else{	// Entrou e vai criar
-			$lojaExemplo = array('name' => 'teste2');
-			$this->model['Loja_model']->insert('store', $lojaExemplo);
-			$lojaIdentificador = $this->model['Loja_model']->get_result();
-			echo $lojaIdentificador;
-			if(isset($lojaIdentificador)){
-				$userStore = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaIdentificador);
-				$this->model['Loja_model']->insert('user_store', $userStore);
+
+			$lojaExemplo = array('name' => 'teste2'); // loja stub
+			if(!$this->verifyStore($lojaExemplo)){ // Verificação de existência da loja 
+				$this->setReturn(array('status'=> false, 'msg' => 'The store already exists.'));
+				return; // Recebe o Id da loja adicionada
 			}
+			if(!$this->verifyUserStore($_SESSION['user_id'])){ // Verifica se o usuário já possui loja
+					$this->setReturn(array('status' => false, 'msg' => 'User already have a store.'));
+					return;
+			}else{
+					$this->model['Loja_model']->insert('store', $lojaExemplo);
+					$lojaIdentificador = $this->model['Loja_model']->get_result();
+					$userStore = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaIdentificador);
+					$this->model['Loja_model']->insert('user_store', $userStore);
+			}
+				
 		}
 	}
+
+
+	//VERIFICACAO EM DB DAS LOJAS
 
 	private function verifyUserStore($store){
 		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "'")){
-			return false;
-		}else{
 			return true;
+		}else{
+			return false;
 		}
 	}
-
 	private function verifyStore($store){
-		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
-		 	return false;
-		 }else{
+		 $status = $this->model['Loja_model']->select('store', "WHERE name = '" . $store['name'] . "'");
+		 if($status){
 		 	return true;
+		 }else{
+		 	return false;
 		 }
 	}
+
+	//Metodo para setar o $this->return apenas por strings
 
 	private function setReturn($msg){
 		if(isset($msg)){
@@ -71,20 +86,6 @@ class Loja extends Controller{
 	public function alterarLoja(){
 		
 	}
-
-	// Produtos , decidindo se receberá um controller específico
-
-	public function cadastrarProduto(){
-
-	}
-	public function alterarProduto(){
-
-	}
-	public function removerProduto(){
-
-	}
-
-
 }
 
 
