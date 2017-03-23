@@ -51,6 +51,37 @@ class Loja extends Controller{
 	}
 
 
+	public function removerLoja(){
+		$data = $this->get_post();
+		$id = $_SESSION['user_id'];
+		if(!isset['user_id']){ // SESSION CHECK
+			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
+			return;
+		}
+		if($this->verifyUserStore($id)){// LOJA CHECK
+			$loja = $this->model['Loja_model']->get_result();
+			$storeid =	$loja['store_id'];
+			unset($loja['store_id']);
+			if($this->verifyStore($storeid)){
+				$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
+			}
+		}else{
+			$this->return['success'] = false;
+			$this->return['error'] .= "Nao existe essa loja";
+		}
+
+
+	}
+	public function alterarLoja(){
+		$data = $this->get_post();
+		$id = $_SESSION['user_id'];
+		if(!isset['user_id']){
+			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
+			return;
+		}
+
+	}
+
 	//VERIFICACAO EM DB DAS LOJAS
 
 	private function verifyUserStore($store){
@@ -69,14 +100,7 @@ class Loja extends Controller{
 		}
 	}
 
-	public function removerLoja(){
-		
 
-
-	}
-	public function alterarLoja(){
-		
-	}
 }
 
 

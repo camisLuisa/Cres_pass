@@ -85,12 +85,11 @@ class User extends Controller
 			$this->return['error'] .= "Não foi possível cadastrar o user";
 
 		}else{
-
-				//CASO: Não existe!
+			//CASO: Não existe!
 			unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
 			$this->model['User_model']->insert('user', $data);
 			if($this->model['User_model']->get_result()){
-					//CASO: Inserção concluída
+				//CASO: Inserção concluída
 				$this->return['error'] .= "Insercao concluida.";
 			}
 			else{
@@ -205,7 +204,6 @@ class User extends Controller
 				$this->return['error'] .= "O RG " . $data['rg'] . " esta no formato incorreto. ";
 			}
 		}
-
 	}
 }
 ?>
