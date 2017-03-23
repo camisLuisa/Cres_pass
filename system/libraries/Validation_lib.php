@@ -112,7 +112,6 @@ class Validation_lib extends Lib
 				$return['error'] .= "O RG " . $data['rg'] . " esta no formato incorreto. ";
 			}
 		}
-
 		return $return;
 	}
 
@@ -122,8 +121,7 @@ class Validation_lib extends Lib
 	}
 
 	public function validateEmail($email){
-
-				// From a to z, 0 to 9, dot and underscore with  @ at the end
+		// From a to z, 0 to 9, dot and underscore with  @ at the end
         $conta = "^([a-z]|[\._-])+[@]";
         // Email provider, a to z with a dot at the end
         $provedor = "[a-z]+[.]";
@@ -144,7 +142,7 @@ class Validation_lib extends Lib
 		// + * or {0,} quantifiers to set the number of digits i would want
 		// since only letters should be allowed, a to z and + after
  		$padrao = "/\A[a-z]+\z/";
-    return preg_match($padrao, $name);
+    	return preg_match($padrao, $name);
  	}
 
  	public function validateCEP($cep){
@@ -157,7 +155,7 @@ class Validation_lib extends Lib
 			// then another 0 to 9 3 times ([0-9]{3})
 			// then \z to end the string
 			$padrao = "/\A[0-9]{5}\-?[0-9]{3}\z/";
-      return preg_match($padrao, $cep);
+      		return preg_match($padrao, $cep);
  	}
 
 	public function validateUsername($user){
@@ -166,15 +164,14 @@ class Validation_lib extends Lib
 			// then can have as much 0 to 9 or a to z, underscore and dots as it wants
 			// Needs at least 4 letters
 			$padrao = "/\A[a-z]{4}+([a-z0-9\_\.]{1,}?)\z/";
-    	return preg_match($padrao, $user);
+    		return preg_match($padrao, $user);
  	}
 
 	public function validateCPF($cpf){
 		// Format xxx xxx xxx xx
 		// 11 numbers without space
 		$padrao = "/\A\d{11}\z/";
-		return preg_match($padrao, $cpf);;
-
+		return preg_match($padrao, $cpf);
 	}
 
 	public function validatePhone($telefone){

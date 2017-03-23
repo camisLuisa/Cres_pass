@@ -19,39 +19,52 @@ class Loja extends Controller{
 
 	public function testes(){
 
+		$_SESSION['user_id'] = 10;
+		$this->criarLoja();
 	}
 
 	public function criarLoja(){
-//		$data = $this->get_post(); JSON SET
-		$data['name'] = 'teste';
-		$teste = $this->lib['Validation_lib']->validateName($data['name']);
-
-		if($this->model['Loja_model']->select('store', $data['name'])){
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= " Uma Loja com nome '" . $data['name'] . "' ja existe! ";
+		//$data = $this->get_post(); // JSON NOT SET
+		if(!isset($_SESSION['user_id'])){
+			$this->setReturn(array('status'=> false, 'msg' => 'Sessao inexistente.'));
 			return;
+		}else{	// Entrou e vai criar
+			$lojaExemplo = array('name' => 'teste2');
+			$this->model['Loja_model']->insert('store', $lojaExemplo);
+			$lojaIdentificador = $this->model['Loja_model']->get_result();
+			echo $lojaIdentificador;
+			if(isset($lojaIdentificador)){
+				$userStore = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaIdentificador);
+				$this->model['Loja_model']->insert('user_store', $userStore);
+			}
 		}
-
-		if($teste){
-			$this->model['Loja_model']->insert('store', $data);
-		}else{
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Nome de loja inválido!";
-		}		
-
 	}
-	public function removerLoja(){
-		//$data = $this->get_post(); JSON SET
-		$data['id'] = 2;
 
-		$teste = $this->model['Loja_model']->delete('store', "WHERE id = '".$data['id']."'");
-
-		if($teste){
-			return;
+	private function verifyUserStore($store){
+		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "'")){
+			return false;
 		}else{
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Nenhuma loja com esse id foi encontrada! ";
+			return true;
 		}
+	}
+
+	private function verifyStore($store){
+		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
+		 	return false;
+		 }else{
+		 	return true;
+		 }
+	}
+
+	private function setReturn($msg){
+		if(isset($msg)){
+			$this->return['success'] = $msg['status'];
+			$this->return['error'] .= $msg['msg'];
+		}
+	}
+
+	public function removerLoja(){
+		
 
 
 	}

@@ -27,7 +27,10 @@ class User extends Controller
 		//procura o usuario
 		$this->model['User_model']->select('user',"WHERE email = '".$data['email']."'");
 		//se achou, login, caso n
-		if($this->model['User_model']->get_result()){
+		$object = $this->model['User_model']->get_result();
+		if($object){
+			$_SESSION['user_id'] = $object['id'];
+			echo $object['id'];
 			// a fazer
 			#[Alyson] A partir daqui, deixa comigo, vou implementar as sessions
 		}else{
