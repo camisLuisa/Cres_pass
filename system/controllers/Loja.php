@@ -19,7 +19,8 @@ class Loja extends Controller{
 
 	public function testes(){
 
-		$_SESSION['user_id'] = 10;
+		$_SESSION['user_id'] = 1;
+		//session_unset();
 		$this->criarLoja();
 	}
 
@@ -52,13 +53,6 @@ class Loja extends Controller{
 		}
 	}
 
-	private function verifyUserStore($store){
-		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "' and store_id != 0")){
-			return true;
-		}else{
-			return false;
-		}
-	}
 	private function verifyStore($store){
 		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
 		 	return true;
@@ -67,26 +61,34 @@ class Loja extends Controller{
 		 }
 	}
 
-
 	public function removerLoja(){
 		//$data = $this->get_post();
 		if(!isset($_SESSION['user_id'])){
 			$this->return['success'] = false;
 			$this->return['error'] .= "Non-existent session.";
 		}else{
-
+			if($this->verifyUserStore($id)){// LOJA CHECK
+				$loja = $this->model['Loja_model']->get_result();
+				$storeid =	$loja['store_id'];
+				
+				if($this->verifyStore($storeid)){
+					$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
+				}else{
+					$this->return['success'] = false;
+					$this->return['error'] .= "Nao existe essa loja";
+				}
+			}
 		}
-
-
 	}
 	public function alterarLoja(){
-		
+		$data = $this->get_post();
+		$id = $_SESSION['user_id'];
+		if(!isset($id)){
+			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
+			return;
+		}
 	}
-
-
-
 }
-
 
 
  ?>
