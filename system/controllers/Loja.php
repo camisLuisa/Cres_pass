@@ -26,45 +26,56 @@ class Loja extends Controller{
 	public function criarLoja(){
 		//$data = $this->get_post(); // JSON NOT SET
 		if(!isset($_SESSION['user_id'])){
-			$this->setReturn(array('status'=> false, 'msg' => 'Sessao inexistente.'));
-			return;
+			$this->return['success'] = false;
+			$this->return['error'] .= "Non-existent session.";
 		}else{	// Entrou e vai criar
-			$lojaExemplo = array('name' => 'teste2');
-			$this->model['Loja_model']->insert('store', $lojaExemplo);
-			$lojaIdentificador = $this->model['Loja_model']->get_result();
-			echo $lojaIdentificador;
-			if(isset($lojaIdentificador)){
-				$userStore = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaIdentificador);
-				$this->model['Loja_model']->insert('user_store', $userStore);
+			$lojaExemplo = array('name' => 'teste2334');
+			if($this->verifyStore($lojaExemplo['name'])){
+				$this->return['success'] = false;
+				$this->return['error'] .= "This store already exists.";
+				return;
+			}else{
+					if($this->verifyUserStore($_SESSION['user_id'])){
+						$this->return['success'] = false;
+						$this->return['error'] .= "This user already owns a store.";
+					}else{
+						$this->model['Loja_model']->insert('store', $lojaExemplo);
+						$lojaid = $this->model['Loja_model']->get_result();
+						if(isset($lojaid)){
+							$lojauser = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaid);
+							$this->model['Loja_model']->insert('user_store', $lojauser);
+						}
+					
+				}
+
 			}
 		}
 	}
 
 	private function verifyUserStore($store){
-		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "'")){
-			return false;
-		}else{
+		if($this->model['Loja_model']->select('user_store', "WHERE user_id = '" . $store . "' and store_id != 0")){
 			return true;
+		}else{
+			return false;
 		}
 	}
-
 	private function verifyStore($store){
 		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
-		 	return false;
-		 }else{
 		 	return true;
+		 }else{
+		 	return false;
 		 }
 	}
 
-	private function setReturn($msg){
-		if(isset($msg)){
-			$this->return['success'] = $msg['status'];
-			$this->return['error'] .= $msg['msg'];
-		}
-	}
 
 	public function removerLoja(){
-		
+		//$data = $this->get_post();
+		if(!isset($_SESSION['user_id'])){
+			$this->return['success'] = false;
+			$this->return['error'] .= "Non-existent session.";
+		}else{
+
+		}
 
 
 	}
@@ -72,17 +83,6 @@ class Loja extends Controller{
 		
 	}
 
-	// Produtos , decidindo se receberá um controller específico
-
-	public function cadastrarProduto(){
-
-	}
-	public function alterarProduto(){
-
-	}
-	public function removerProduto(){
-
-	}
 
 
 }
