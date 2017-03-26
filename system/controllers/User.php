@@ -100,6 +100,16 @@ class User extends Controller
 		}
 	}
 
+	function busca_cep(){
+		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode('50721-200').'&formato=query_string');
+    if(!$resultado){
+        $resultado = "&resultado=0&resultado_txt=erro+ao+buscar+cep";
+    }
+		parse_str($resultado, $retorno); // transforma string em um array com chaves
+		$this->return = $retorno;
+
+		print_r($this->return);
+	}
 
 	public function callForValidation($data){
 		// Creates a array like $this->return from controller to return it with compatibility
