@@ -25,84 +25,70 @@ class Loja extends Controller{
 	}
 
 	public function criarLoja(){
-		$data = $this->get_post(); // JSON NOT SET
-		$id = $_SESSION['user_id'];
-		if(!isset($id)){
-			$this->setReturn(array('status'=> false, 'msg' => 'Non existent session.'));
-			return;
+		//$data = $this->get_post(); // JSON NOT SET
+		if(!isset($_SESSION['user_id'])){
+			$this->return['success'] = false;
+			$this->return['error'] .= "Non-existent session.";
 		}else{	// Entrou e vai criar
-
-			$lojaExemplo = array('name' => 'teste2'); // loja stub
-			if($this->verifyStore($lojaExemplo)){ // Verificação de existência da loja 
-				$this->setReturn(array('status'=> false, 'msg' => 'The store already exists.'));
-				 // Recebe o Id da loja adicionada
-			}
-			if($this->verifyUserStore($_SESSION['user_id'])){ // Verifica se o usuário já possui loja
-					$this->setReturn(array('status' => false, 'msg' => 'User already have a store.'));
+			$lojaExemplo = array('name' => 'teste2334');
+			if($this->verifyStore($lojaExemplo['name'])){
+				$this->return['success'] = false;
+				$this->return['error'] .= "This store already exists.";
+				return;
 			}else{
-					$this->model['Loja_model']->insert('store', $lojaExemplo);
-					$lojaIdentificador = $this->model['Loja_model']->get_result();
-					$userStore = array('user_id' => $id, 'store_id' => $lojaIdentificador);
-					$this->model['Loja_model']->insert('user_store', $userStore);
-					$this->setReturn(array('status'=> true, 'msg' => "Everything is fine."));
+					if($this->verifyUserStore($_SESSION['user_id'])){
+						$this->return['success'] = false;
+						$this->return['error'] .= "This user already owns a store.";
+					}else{
+						$this->model['Loja_model']->insert('store', $lojaExemplo);
+						$lojaid = $this->model['Loja_model']->get_result();
+						if(isset($lojaid)){
+							$lojauser = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaid);
+							$this->model['Loja_model']->insert('user_store', $lojauser);
+						}
+					
+				}
+
 			}
-				
 		}
 	}
 
+	private function verifyStore($store){
+		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
+		 	return true;
+		 }else{
+		 	return false;
+		 }
+	}
 
 	public function removerLoja(){
-		$data = $this->get_post();
-		$id = $_SESSION['user_id'];
-		if(!isset['user_id']){ // SESSION CHECK
-			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
-			return;
-		}
-		if($this->verifyUserStore($id)){// LOJA CHECK
-			$loja = $this->model['Loja_model']->get_result();
-			$storeid =	$loja['store_id'];
-			unset($loja['store_id']);
-			if($this->verifyStore($storeid)){
-				$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
-			}
-		}else{
+		//$data = $this->get_post();
+		if(!isset($_SESSION['user_id'])){
 			$this->return['success'] = false;
-			$this->return['error'] .= "Nao existe essa loja";
+			$this->return['error'] .= "Non-existent session.";
+		}else{
+			if($this->verifyUserStore($id)){// LOJA CHECK
+				$loja = $this->model['Loja_model']->get_result();
+				$storeid =	$loja['store_id'];
+				
+				if($this->verifyStore($storeid)){
+					$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
+				}else{
+					$this->return['success'] = false;
+					$this->return['error'] .= "Nao existe essa loja";
+				}
+			}
 		}
-
-
 	}
 	public function alterarLoja(){
 		$data = $this->get_post();
 		$id = $_SESSION['user_id'];
-		if(!isset['user_id']){
+		if(!isset($id)){
 			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
 			return;
 		}
-
 	}
-
-	//VERIFICACAO EM DB DAS LOJAS
-
-	private function verifyUserStore($store){
-		return $this->model['Loja_model']->select('user_store', "WHERE user_id = '" .$store. "'");
-	}
-	private function verifyStore($store){
-		 return $this->model['Loja_model']->select('store', "WHERE name = '" . $store['name'] . "'");
-	}
-
-	//Metodo para setar o $this->return apenas por strings
-
-	private function setReturn($msg){
-		if(isset($msg)){
-			$this->return['success'] = $msg['status'];
-			$this->return['error'] .= $msg['msg'];
-		}
-	}
-
-
 }
-
 
 
  ?>
