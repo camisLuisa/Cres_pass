@@ -18,12 +18,27 @@ class User extends Controller
 		$this->return = array('success' => true, 'error' => '');
 	}
 
+	public function passCheck($email, $pass){
+		$this->model['User_model']->select('user', "WHERE email ='" . $email . "'");
+		$user = $this->model['User_model']->get_result();
+		return password_verify($pass, $user['password']);
+	}
 
 	public function login(){
 		// pegar os dados do front end
 		$data = $this->get_post();
 
-		$this->result = $this->lib['Validation_lib']->callForValidation($data);
+		$this->callForValidation($data);
+
+		if(!$this->return['success']){
+			exit();
+		}
+
+		$status = passCheck($data['email'], $data['password']);
+
+		if(!$status){
+			exit();
+		}
 
 		//procura o usuario
 		$this->model['User_model']->select('user',"WHERE email = '".$data['email']."'");
@@ -59,8 +74,18 @@ class User extends Controller
 			'complement' => '**apt 123');
 		//$this->callForValidation($teste);
 		//$this->signup($teste);
+
+		/* Encriptando o password --testes--
+		$password = '1234';
+		$encryptedpass = password_hash($password, PASSWORD_DEFAULT);
+		$verify = password_verify($password, $encryptedpass);
+		echo $verify;
+		*/
 	}
 
+	public function activeAccount(){
+
+	}
 
 	public function signup(){
 		// front -> back
@@ -87,6 +112,7 @@ class User extends Controller
 		}else{
 			//CASO: Não existe!
 			unset($data['passwordcheck']); // Campo não utilizado na hora de inserção
+			$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 			$this->model['User_model']->insert('user', $data);
 			if($this->model['User_model']->get_result()){
 				//CASO: Inserção concluída
