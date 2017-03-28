@@ -1,24 +1,38 @@
-<div class="container" ng-controller="LoginController">
+<style type="text/css">
+	.b{
+		border: 1px solid black;
+	}
+	.equal {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.equal > div[class*='col-'] {  
+		display: flex;
+		flex-direction: column;
+	}
+</style>
+<div class="container-fluid">
 	<div class="row">
-		<div class="pull-left">
-			<h3>Olá fulano{{user}}</h3>
-			<h4>
-				email de fulano{{email}}
-				<a href="#">(editar cadastro)</a>
-			</h4>
+		<div class="col-sm-3">
+			<div class="list-group">
+				<button class="list-group-item active">
+					<h3>Olá {{user.name}}</h3>
+					<p>{{user.email}}</p>
+				</button>
+				<button class="list-group-item"><i class="fa fa-home" aria-hidden="true"></i> CRIAR LOJINHA</button>
+				<button class="list-group-item"><i class="fa fa-shopping-bag" aria-hidden="true"></i> COMPRAS</button>
+				<button class="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> CADASTRO</button>
+			</div>
 		</div>
-		<div class="pull-right">
-			<a href="#"><i class="fa fa-home" aria-hidden="true"></i>CRIAR LOJINHA</a>
-			<a href="#"><i class="fa fa-heart" aria-hidden="true"></i>FAVORITOS</a>
-			<a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>COMPRAS</a>
-			<a href="#"><i class="fa fa-comments" aria-hidden="true"></i>MENSAGENS</a>
-			<a href="#"><i class="fa fa-user" aria-hidden="true"></i>CADASTRO</a>
+		<div class="col-sm-9">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center"><h3>CONTENT TITLE</h3></div>
+				<div class="panel-body">
+					<h1>CONTENT</h1>
+					<h1>CONTENT</h1>
+					<h1>CONTENT</h1>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div>
-		<a href="#">Compras em aberto</a>
-		<a href="#">Finalizadas</a>
-		<a href="#">Canceladas</a>
-		<a href="#">Todas</a>
 	</div>
 </div>

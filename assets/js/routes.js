@@ -17,7 +17,7 @@ app.config(function($routeProvider, $locationProvider){
 	})
 	.when('/painel', {
 		templateUrl: viewsPath+'panel.php',
-		controller: 'LoginController'
+		controller: 'PanelController'
 	})
 	.otherwise({redirectTo: '/'});
 });

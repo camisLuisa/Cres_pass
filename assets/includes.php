@@ -51,8 +51,7 @@ $load['js'][] = 'directives';
 $load['js']['controllers'][] = 'header-controller';
 $load['js']['controllers'][] = 'footer-controller';
 $load['js']['controllers'][] = 'home-controller';
-$load['js']['controllers'][] = 'page-controller';
-$load['js']['controllers'][] = 'login-controller';
+$load['js']['controllers'][] = 'panel-controller';
 $load['js']['controllers'][] = 'signup-controller';
 
 
