@@ -55,4 +55,14 @@
 			<a ng-click="go('/cadastro')">CADASTRO</a>
 		</div> 
 	</nav>
-</div>
+	<!-- LOGIN MODAL -->
+	<modal modal-id="loginModal" modal-type="sm" modal-title="Login">
+		<form ng-submit="login(field)">
+			<input type="text"  class="form-control" ng-model="input.email">
+			<input type="text"  class="form-control" ng-model="input.pass">
+			<br>
+			<button class="btn btn-primary btn-block" type="submit">Acessar</button>
+		</form>
+	</modal>
+	<!-- END LOGIN MODAL -->
+</div> <!-- .HeaderController -->
