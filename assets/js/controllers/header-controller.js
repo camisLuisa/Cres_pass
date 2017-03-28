@@ -22,6 +22,9 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 				console.log('Usuário logado.');
 				$location.path('/painel');
 			}
+			else{
+				console.log(response.data.error);
+			}
 		}).catch(function(error) {
 			console.log('Erro!');
 		});
