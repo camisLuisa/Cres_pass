@@ -135,7 +135,7 @@ class User extends Controller
 		}
 	}
 
-	function busca_cep(){
+	private function busca_cep(){
 		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode('50721-200').'&formato=query_string');
     if(!$resultado){
         $resultado = "&resultado=0&resultado_txt=erro+ao+buscar+cep";
@@ -249,6 +249,8 @@ class User extends Controller
 				$this->return['error'] .= "O RG " . $data['rg'] . " esta no formato incorreto. ";
 			}
 		}
+		echo $this->return['error'];
 	}
+
 }
 ?>
