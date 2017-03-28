@@ -1,6 +1,6 @@
 <div class="container signup">
 	<div class="row">
-		<div class="col-md-4"></div>
+		<div class="col-md-4"></div><!--por que tem essa div sem nada?-->
 		<div class="col-md-4">
 			<h1>CADASTRO</h1>
 			<form name="form1" ng-submit="signup(field)" novalidate>

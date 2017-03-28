@@ -57,13 +57,20 @@
 	</nav>
 	<!-- LOGIN MODAL -->
 	<modal modal-id="loginModal" modal-type="sm" modal-title="Login">
-		<form ng-submit="login(input)">
+		<form name="Form" ng-submit="login(input)">
 			<label>Email</label>
-			<input type="text"  class="form-control" ng-model="input.email" placeholder="Seu email">
+			<input type="email" name="Email" class="form-control" ng-model="input.email" placeholder="Seu email" required>
 			<br>
+			<div ng-if="(Form.Email.$touched || Form.$submitted) && Form.Email.$invalid">
+					<span ng-if="Form.Email.$error.required">Este campo é obrigatório</span>
+					<span ng-if="Form.Email.$error.email">Este não é um email valido</span>
+				</div>
 			<label>Senha</label>
-			<input type="password"  class="form-control" ng-model="input.password" placeholder="Sua senha">
+			<input type="password" name="Password" class="form-control" ng-model="input.password" placeholder="Sua senha" required>
 			<br>
+			<div ng-if="(Form.Password.$touched || Form.$submitted) && Form.Password.$invalid">
+					<span ng-if="Form.Password.$error.required">Este campo é obrigatório</span>
+				</div>
 			<button class="btn btn-primary btn-block" type="submit">Acessar</button>
 		</form>
 	</modal>
