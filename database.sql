@@ -62,15 +62,6 @@ CREATE TABLE IF NOT EXISTS `store`(
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 /* --------------------------------------------------
- * TABLE `product`
- * --------------------------------------------------
- */
-CREATE TABLE IF NOT EXISTS `product`(
-	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(50) NOT NULL UNIQUE
-)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
-
-/* --------------------------------------------------
  * TABLE `user_store`
  * --------------------------------------------------
  */
@@ -84,4 +75,29 @@ CREATE TABLE IF NOT EXISTS `user_store`(
 	CONSTRAINT `fk_store_id`
 		FOREIGN KEY (`store_id`)
 		REFERENCES `store`(`id`)
+)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
+
+/* --------------------------------------------------
+ * TABLE `product`
+ * --------------------------------------------------
+ */
+CREATE TABLE IF NOT EXISTS `product`(
+	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL UNIQUE
+)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
+
+/* --------------------------------------------------
+ * TABLE `store_product`
+ * --------------------------------------------------
+ */
+CREATE TABLE IF NOT EXISTS `store_product`(
+	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+	`store_id` INT(11) NOT NULL,
+	`product_id` INT(11) NOT NULL,
+	CONSTRAINT `fk_store_id`
+		FOREIGN KEY (`store_id`)
+		REFERENCES `store`(`id`),
+	CONSTRAINT `fk_product_id`
+		FOREIGN KEY (`product_id`)
+		REFERENCES `product`(`id`)
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
