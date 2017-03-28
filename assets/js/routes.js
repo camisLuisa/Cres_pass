@@ -15,13 +15,9 @@ app.config(function($routeProvider, $locationProvider){
 		templateUrl: viewsPath+'signup.php',
 		controller: 'SignUpController'
 	})
-	.when('/admin', {
-		templateUrl: viewsPath+'admin.php',
+	.when('/painel', {
+		templateUrl: viewsPath+'panel.php',
 		controller: 'LoginController'
-	})
-	.when('/page/:var', {
-		templateUrl: viewsPath+'page.php',
-		controller: 'PageController'
 	})
 	.otherwise({redirectTo: '/'});
 });

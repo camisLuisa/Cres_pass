@@ -33,11 +33,11 @@
 			</div>
 		</div>
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span> 
-			</button>
+			<div class="col-xs-6 col-xs-offset-3">
+				<button type="button" class="navbar-toggle btn-block text-center" data-toggle="collapse" data-target="#myNavbar">
+					<i id="toggleIcon"class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+				</button>
+			</div>
 		</div>
 		<div class="col-md-4">
 			<form class="navbar-form" ng-submit="search(searchInput)">
@@ -49,7 +49,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="nav navbar-nav nav bar right">
+		<div class="nav navbar-nav text-center">
 			<a data-toggle="modal" data-target="#loginModal">LOGIN</a>
 			ou faça seu
 			<a ng-click="go('/cadastro')">CADASTRO</a>
@@ -58,11 +58,25 @@
 	<!-- LOGIN MODAL -->
 	<modal modal-id="loginModal" modal-type="sm" modal-title="Login">
 		<form ng-submit="login(field)">
-			<input type="text"  class="form-control" ng-model="input.email">
-			<input type="text"  class="form-control" ng-model="input.pass">
+			<label>Email</label>
+			<input type="text"  class="form-control" ng-model="input.email" placeholder="Seu email">
+			<br>
+			<label>Senha</label>
+			<input type="text"  class="form-control" ng-model="input.pass" placeholder="Sua senha">
 			<br>
 			<button class="btn btn-primary btn-block" type="submit">Acessar</button>
 		</form>
 	</modal>
 	<!-- END LOGIN MODAL -->
 </div> <!-- .HeaderController -->
+
+<!-- Nav bar icon toggler -->
+<script type="text/javascript">
+	$('#myNavbar').on('shown.bs.collapse', function () {
+       $("#toggleIcon").removeClass("fa-caret-square-o-down").addClass("fa-caret-square-o-up");
+    });
+
+    $('#myNavbar').on('hidden.bs.collapse', function () {
+       $("#toggleIcon").removeClass("fa-caret-square-o-up").addClass("fa-caret-square-o-down");
+    });
+</script>
