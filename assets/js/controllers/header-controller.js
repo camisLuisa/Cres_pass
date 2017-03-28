@@ -1,5 +1,9 @@
 app.controller('HeaderController', function($scope, $location, $routeParams, $http){
 	$scope.title = "HEADER";
+	
+	$scope.go = function(path) {
+		$location.path(path);
+	}
 
 	$scope.search = function(input) {
 		// $http.post('url', input)
@@ -11,7 +15,15 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 		console.log(input);
 	};
 
-	$scope.go = function(path) {
-		$location.path(path);
-	}
+	$scope.login = function(field) {
+		$http.post('system/user/login', field)
+		.then(function(response) {
+			if (response.data.success) {
+				console.log('Usuário logado.');
+				$location.path('/admin');
+			}
+		}).catch(function(error) {
+			console.log('Erro!');
+		});
+	};
 });

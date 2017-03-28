@@ -1,3 +1,6 @@
+var viewsPath = 'assets/views/';
+var directivesPath = 'assets/js/directives/';
+
 /* ----------------------------------------
  * 
  * ----------------------------------------

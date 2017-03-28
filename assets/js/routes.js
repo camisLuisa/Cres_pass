@@ -2,10 +2,7 @@
  * 
  * ------------------------------
  */
- var viewsPath = 'assets/views/';
-
- app
- .config(function($routeProvider, $locationProvider){
+app.config(function($routeProvider, $locationProvider){
  	$locationProvider.html5Mode(true);
 
 	//Define the custom routes
