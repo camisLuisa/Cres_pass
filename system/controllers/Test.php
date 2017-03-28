@@ -18,16 +18,55 @@ class Test extends Controller
 	}
 
 	public function test(){
-		$pass = 'admin123';
+		$pass = '123';
 		$hash = password_hash($pass, PASSWORD_DEFAULT);
 		echo password_verify($pass, $hash);
 		echo "<br>";
+		echo "HASH FOR $pass IS $hash";
 		echo "<br>";
 	}
 
-	public function model(){
-		$this->model['test_model']->delete('test', "WHERE test_name = 'alo'");
-		var_dump($this->model['test_model']->get_result());
+	public function session(){
+		if(isset($_SESSION)){
+			echo '
+				<style type="text/css">
+					table {
+					    font-family: arial, sans-serif;
+					    border-collapse: collapse;
+					    width: 100%;
+					}
+					td, th {
+					    border: 1px solid #dddddd;
+					    text-align: left;
+					    padding: 8px;
+					}
+					tr:nth-child(even) {
+					    background-color: #dddddd;
+					}
+				</style>
+				<h1>Session Array</h1>
+				<table>
+					<tr>
+						<th>KEY</th>
+						<th>VALUE</th>
+					</tr>
+			';
+			foreach ($_SESSION as $key => $value) {
+				echo '
+					<tr>
+						<td>'.$key.'</td>
+						<td>'.$value.'</td>
+					</tr>
+				';
+			}
+			echo '
+				</table>
+			';
+		}
+		else{
+			echo "<p>No session set<p>";
+		}
+		unset($this->result);
 	}
 
 	public function square(){

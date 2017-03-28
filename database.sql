@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `user`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
 	/* Login infos */
 	`email` VARCHAR(50) NOT NULL UNIQUE,
-	`password` VARCHAR(50) NOT NULL,
+	`password` VARCHAR(255) NOT NULL,
 	/* Personal infos */
 	`name` VARCHAR(50) NOT NULL,
 	`last_name` VARCHAR(50) NOT NULL,
@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `user`(
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 INSERT INTO `user`(`email`, `password`, `name`, `last_name`, `type`, `cpf`, `rg`, `ddd_1`, `tel_1`, `cep`, `street`, `number`, `neighborhood`, `city`, `state`)
-VALUES ('admin@admin.com', '123', 'Admin', 'da Silva', 'outro', '419.430.324-59', '37.372.845-1', '81', '98765-4321', '52071-200', 'Rua Baturité', '183', 'Monteiro', 'Recife', 'PE'),
-('test@test.com', '123', 'Test', 'Almeida', 'outro', '493.612.164-90', '13.984.716-9', '81', '94321-8765', '51190-250', 'Rua José Fernandes Portugal', '625', 'Imbiribeira', 'Recife', 'PE');
+VALUES ('admin@admin.com', '$2y$10$5/oe0cWGklbKntGamphVR.7ZusFckOuefh3aInUG598ldYV07C4fi', 'Admin', 'da Silva', 'outro', '419.430.324-59', '37.372.845-1', '81', '98765-4321', '52071-200', 'Rua Baturité', '183', 'Monteiro', 'Recife', 'PE'),
+('test@test.com', '$2y$10$D1G2WAqEp3T846fz6sQBNe9sgnxRJII9dwv7mTyJ/THkrawDt4uQ6', 'Test', 'Almeida', 'outro', '493.612.164-90', '13.984.716-9', '81', '94321-8765', '51190-250', 'Rua José Fernandes Portugal', '625', 'Imbiribeira', 'Recife', 'PE');
 
 
 /* --------------------------------------------------

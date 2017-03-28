@@ -34,7 +34,7 @@ class User extends Controller
 			exit();
 		}
 
-		$status = passCheck($data['email'], $data['password']);
+		$status = $this->passCheck($data['email'], $data['password']);
 
 		if(!$status){
 			exit();
@@ -46,7 +46,6 @@ class User extends Controller
 		$object = $this->model['User_model']->get_result();
 		if($object){
 			$_SESSION['user_id'] = $object['id'];
-			echo $object['id'];
 			// a fazer
 			#[Alyson] A partir daqui, deixa comigo, vou implementar as sessions
 		}else{

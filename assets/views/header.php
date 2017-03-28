@@ -57,12 +57,12 @@
 	</nav>
 	<!-- LOGIN MODAL -->
 	<modal modal-id="loginModal" modal-type="sm" modal-title="Login">
-		<form ng-submit="login(field)">
+		<form ng-submit="login(input)">
 			<label>Email</label>
 			<input type="text"  class="form-control" ng-model="input.email" placeholder="Seu email">
 			<br>
 			<label>Senha</label>
-			<input type="text"  class="form-control" ng-model="input.pass" placeholder="Sua senha">
+			<input type="password"  class="form-control" ng-model="input.password" placeholder="Sua senha">
 			<br>
 			<button class="btn btn-primary btn-block" type="submit">Acessar</button>
 		</form>
