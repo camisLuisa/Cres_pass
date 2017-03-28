@@ -42,6 +42,7 @@ $load['js']['core'][] = 'ngMask.min';
  */
 $load['js'][] = 'app';
 $load['js'][] = 'routes';
+$load['js'][] = 'directives';
 
 /* --------------------------------------------------
  * assets/js/controllers/
