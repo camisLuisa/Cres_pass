@@ -16,6 +16,13 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 	};
 
 	$scope.login = function(input) {
+
+		$scope.Form.$setDirty();
+
+		if ($scope.Form.$invalid) {
+			return;
+		}
+
 		$http.post('system/user/login', input)
 		.then(function(response) {
 			if (response.data.success) {
