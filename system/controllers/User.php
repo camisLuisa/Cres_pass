@@ -26,10 +26,6 @@ class User extends Controller
 		else{
 			$this->return['user'] = $user;
 		}
-
-		#Special character will cause problems
-		unset($this->return['user']['street']);
-
 	}
 
 	public function passCheck($email, $pass){
