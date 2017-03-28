@@ -18,7 +18,11 @@ class Test extends Controller
 	}
 
 	public function test(){
-
+		$pass = 'admin123';
+		$hash = password_hash($pass, PASSWORD_DEFAULT);
+		echo password_verify($pass, $hash);
+		echo "<br>";
+		echo "<br>";
 	}
 
 	public function model(){

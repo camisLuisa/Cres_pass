@@ -20,7 +20,7 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 		.then(function(response) {
 			if (response.data.success) {
 				console.log('Usuário logado.');
-				$location.path('/admin');
+				$location.path('/painel');
 			}
 		}).catch(function(error) {
 			console.log('Erro!');
