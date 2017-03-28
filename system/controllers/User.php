@@ -18,6 +18,20 @@ class User extends Controller
 		$this->return = array('success' => true, 'error' => '');
 	}
 
+	public function get_infos(){
+		$user = $this->model['User_model']->logged_user();
+		if(is_null($user)){
+			$this->return['success'] = FALSE;
+		}
+		else{
+			$this->return['user'] = $user;
+		}
+
+		#Special character will cause problems
+		unset($this->return['user']['street']);
+
+	}
+
 	public function passCheck($email, $pass){
 		$this->model['User_model']->select('user', "WHERE email ='" . $email . "'");
 		$user = $this->model['User_model']->get_result();

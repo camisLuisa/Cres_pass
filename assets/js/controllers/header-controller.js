@@ -15,11 +15,12 @@ app.controller('HeaderController', function($scope, $location, $routeParams, $ht
 		console.log(input);
 	};
 
-	$scope.login = function(field) {
-		$http.post('system/user/login', field)
+	$scope.login = function(input) {
+		$http.post('system/user/login', input)
 		.then(function(response) {
 			if (response.data.success) {
-				console.log('Usuário logado.');
+				console.log($scope.input);
+				//$('#loginModal').modal('hide');
 				$location.path('/painel');
 			}
 			else{
