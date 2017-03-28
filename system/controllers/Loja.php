@@ -19,61 +19,76 @@ class Loja extends Controller{
 
 	public function testes(){
 
+		$_SESSION['user_id'] = 1;
+		//session_unset();
+		$this->criarLoja();
 	}
 
 	public function criarLoja(){
-//		$data = $this->get_post(); JSON SET
-		$data['name'] = 'teste';
-		$teste = $this->lib['Validation_lib']->validateName($data['name']);
+		//$data = $this->get_post(); // JSON NOT SET
+		if(!isset($_SESSION['user_id'])){
+			$this->return['success'] = false;
+			$this->return['error'] .= "Non-existent session.";
+		}else{	// Entrou e vai criar
+			$lojaExemplo = array('name' => 'teste2334');
+			if($this->verifyStore($lojaExemplo['name'])){
+				$this->return['success'] = false;
+				$this->return['error'] .= "This store already exists.";
+				return;
+			}else{
+					if($this->verifyUserStore($_SESSION['user_id'])){
+						$this->return['success'] = false;
+						$this->return['error'] .= "This user already owns a store.";
+					}else{
+						$this->model['Loja_model']->insert('store', $lojaExemplo);
+						$lojaid = $this->model['Loja_model']->get_result();
+						if(isset($lojaid)){
+							$lojauser = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaid);
+							$this->model['Loja_model']->insert('user_store', $lojauser);
+						}
+					
+				}
 
-		if($this->model['Loja_model']->select('store', $data['name'])){
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= " Uma Loja com nome '" . $data['name'] . "' ja existe! ";
-			return;
+			}
 		}
-
-		if($teste){
-			$this->model['Loja_model']->insert('store', $data);
-		}else{
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Nome de loja inválido!";
-		}		
-
 	}
+
+	private function verifyStore($store){
+		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
+		 	return true;
+		 }else{
+		 	return false;
+		 }
+	}
+
 	public function removerLoja(){
-		//$data = $this->get_post(); JSON SET
-		$data['id'] = 2;
-
-		$teste = $this->model['Loja_model']->delete('store', "WHERE id = '".$data['id']."'");
-
-		if($teste){
-			return;
+		//$data = $this->get_post();
+		if(!isset($_SESSION['user_id'])){
+			$this->return['success'] = false;
+			$this->return['error'] .= "Non-existent session.";
 		}else{
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Nenhuma loja com esse id foi encontrada! ";
+			if($this->verifyUserStore($id)){// LOJA CHECK
+				$loja = $this->model['Loja_model']->get_result();
+				$storeid =	$loja['store_id'];
+				
+				if($this->verifyStore($storeid)){
+					$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
+				}else{
+					$this->return['success'] = false;
+					$this->return['error'] .= "Nao existe essa loja";
+				}
+			}
 		}
-
-
 	}
 	public function alterarLoja(){
-		
+		$data = $this->get_post();
+		$id = $_SESSION['user_id'];
+		if(!isset($id)){
+			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
+			return;
+		}
 	}
-
-	// Produtos , decidindo se receberá um controller específico
-
-	public function cadastrarProduto(){
-
-	}
-	public function alterarProduto(){
-
-	}
-	public function removerProduto(){
-
-	}
-
-
 }
-
 
 
  ?>
