@@ -32,10 +32,10 @@
  */
 
 /* --------------------------------------------------
- * DATABASE
+ * DATABASE CONSTANTS
  * --------------------------------------------------
  */
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'cres_pass');
+define('DB_NAME', 'crescend_main_db');
