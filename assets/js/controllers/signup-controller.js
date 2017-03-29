@@ -1,4 +1,4 @@
-app.controller('SignUpController', function($scope, $location, $routeParams, $http){
+app.controller('SignUpController', function($scope, $state, $http){
 
 	$scope.signup = function(field) {
 

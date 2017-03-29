@@ -5,4 +5,4 @@ var directivesPath = 'assets/js/directives/';
  * 
  * ----------------------------------------
  */
-var app = angular.module('app', ['ngRoute', 'ngMask']);
+var app = angular.module('app', ['ui.router', 'ngMask']);
