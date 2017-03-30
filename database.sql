@@ -5,7 +5,7 @@
  * create a new one and select it.
  */
 DROP DATABASE IF EXISTS `cres_pass`;
-CREATE DATABASE `cres_pass` CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE `cres_pass` CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `cres_pass`;
 
 /* --------------------------------------------------
