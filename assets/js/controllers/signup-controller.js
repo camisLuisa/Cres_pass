@@ -1,4 +1,4 @@
-app.controller('SignUpController', function($scope, $location, $routeParams, $http){
+app.controller('SignUpController', function($scope, $state, $http){
 
 	$scope.signup = function(field) {
 
@@ -10,6 +10,7 @@ app.controller('SignUpController', function($scope, $location, $routeParams, $ht
 
 		$http.post('system/user/signup', field)
 		.then(function(response) {
+			
 			if (response.data.success) {
 				console.log('Usuário cadastrado.');
 			}

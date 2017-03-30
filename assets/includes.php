@@ -31,7 +31,7 @@ $load['css'][] = 'header-footer';
  * --------------------------------------------------
  */
 $load['js']['core'][] = 'angular.min';
-$load['js']['core'][] = 'angular-route.min';
+$load['js']['core'][] = 'angular-ui-router.min';
 $load['js']['core'][] = 'jquery.min';
 $load['js']['core'][] = 'bootstrap.min';
 $load['js']['core'][] = 'ngMask.min';
@@ -48,8 +48,7 @@ $load['js'][] = 'directives';
  * assets/js/controllers/
  * --------------------------------------------------
  */
-$load['js']['controllers'][] = 'header-controller';
-$load['js']['controllers'][] = 'footer-controller';
+$load['js']['controllers'][] = 'base-controller';
 $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'panel-controller';
 $load['js']['controllers'][] = 'signup-controller';
