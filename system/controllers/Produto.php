@@ -18,8 +18,8 @@ class Produto extends Controller{
 	}
 
 	public function novoProduto(){
-		//$data = $this->get_post(); // Json set
-		//$this->callForValidation($data); Validation of data
+		$data = $this->get_post(); // Json set
+		$this->callForValidation($data); Validation of data
 
 		$this->model['Produto_model']->insert('product', $data);
 
@@ -31,9 +31,8 @@ class Produto extends Controller{
 	}
 
 	public function alterarProduto(){
-		//$data = $this->get_post(); // Json
-		//$this->callForValidation($data); // validation of data
-
+		$data = $this->get_post(); // Json
+		$this->callForValidation($data); // validation of data
 		$this->model['Produto_model']->update('product', $data, "WHERE id= '" . $data['id'] ."'");
 
 
@@ -49,8 +48,12 @@ class Produto extends Controller{
 		$this-model['Produto_model']->delete('product', "WHERE id ='" . $data['id'] . "'");
 	}
 
-	public function consultarProduto(){
-		
+	public function consultarProduto($nameProduct){
+
+		$this->model['Produto_model']->select('produtos', "WHERE name = '" . $nameProduct . "'");
+		$produtos = $this->model['Produto_model']->get_result();
+		$this->return['produtos'] = $produtos;
+
 	}
 
 }

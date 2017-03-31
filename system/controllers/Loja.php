@@ -25,41 +25,30 @@ class Loja extends Controller{
 	}
 
 	public function criarLoja(){
-		//$data = $this->get_post(); // JSON NOT SET
+		$data = $this->get_post(); // JSON NOT SET
 		if(!isset($_SESSION['user_id'])){
 			$this->return['success'] = false;
 			$this->return['error'] .= "Non-existent session.";
 		}else{	// Entrou e vai criar
-			$lojaExemplo = array('name' => 'teste2334');
-			if($this->verifyStore($lojaExemplo['name'])){
+			if($this->model['Loja_model']->verifyStore($data['name'])){
 				$this->return['success'] = false;
 				$this->return['error'] .= "This store already exists.";
 				return;
 			}else{
-					if($this->verifyUserStore($_SESSION['user_id'])){
+					if($this->model['Loja_model']->verifyUserStore(){
 						$this->return['success'] = false;
 						$this->return['error'] .= "This user already owns a store.";
 					}else{
-						$this->model['Loja_model']->insert('store', $lojaExemplo);
+						$this->model['Loja_model']->insert('store', $data);
 						$lojaid = $this->model['Loja_model']->get_result();
 						if(isset($lojaid)){
 							$lojauser = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaid);
 							$this->model['Loja_model']->insert('user_store', $lojauser);
 						}
-					
+					}
 				}
-
 			}
 		}
-	}
-
-	private function verifyStore($store){
-		 if($this->model['Loja_model']->select('store', "WHERE name = '" . $store . "'")){
-		 	return true;
-		 }else{
-		 	return false;
-		 }
-	}
 
 	public function removerLoja(){
 		//$data = $this->get_post();
@@ -67,12 +56,15 @@ class Loja extends Controller{
 			$this->return['success'] = false;
 			$this->return['error'] .= "Non-existent session.";
 		}else{
-			if($this->verifyUserStore($id)){// LOJA CHECK
+			if($this->model['Loja_model']->verifyUserStore($id)){// LOJA CHECK
 				$loja = $this->model['Loja_model']->get_result();
 				$storeid =	$loja['store_id'];
-				
-				if($this->verifyStore($storeid)){
+
+				if($this->model['Loja_model']->verifyStore($storeid)){
+					//deletar da base de dados de lojas
 					$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
+					//deletar da base de dados user com loja ou setaria o valor do store_id para NULL
+					$this->model['Loja_model']->delete('user_store', "WHERE user_id = '" . $_SESSION['user_id'] . "'");
 				}else{
 					$this->return['success'] = false;
 					$this->return['error'] .= "Nao existe essa loja";
@@ -80,6 +72,7 @@ class Loja extends Controller{
 			}
 		}
 	}
+
 	public function alterarLoja(){
 		$data = $this->get_post();
 		$id = $_SESSION['user_id'];
