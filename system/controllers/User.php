@@ -27,7 +27,7 @@ class User extends Controller
 			$this->return['user'] = $user;
 		}
 	}
-
+	// a remover depois de testes
 	public function passCheck($email, $pass){
 		$this->model['User_model']->select('user', "WHERE email ='" . $email . "'");
 		$user = $this->model['User_model']->get_result();
