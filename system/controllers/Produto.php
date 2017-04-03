@@ -17,9 +17,18 @@ class Produto extends Controller{
 		$this->load_lib('Validation_lib');
 	}
 
+	public function get_infos(){ //
+		$store = $this->model['Loja_model']->logged_user();
+		if(is_null($store)){
+			$this->return['success'] = FALSE;
+		}else{
+			$this->return['store'] = $loja;
+		}
+	}
+
 	public function novoProduto(){
 		$data = $this->get_post(); // Json set
-		$this->callForValidation($data); Validation of data
+		$this->callForValidation($data); // Validation of data
 
 		$this->model['Produto_model']->insert('product', $data);
 
@@ -49,11 +58,9 @@ class Produto extends Controller{
 	}
 
 	public function consultarProduto($nameProduct){
-
 		$this->model['Produto_model']->select('produtos', "WHERE name = '" . $nameProduct . "'");
 		$produtos = $this->model['Produto_model']->get_result();
 		$this->return['produtos'] = $produtos;
-
 	}
 
 }

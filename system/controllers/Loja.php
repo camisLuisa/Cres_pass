@@ -17,6 +17,15 @@ class Loja extends Controller{
 		$this->load_lib('Validation_lib');
 	}
 
+	public function get_infos(){ // 
+		$store = $this->model['Loja_model']->logged_user();
+		if(is_null($store)) {
+			$this->return['success'] = FALSE;
+		} else {
+			$this->return['loja'] = $store;
+		}
+	}
+
 	public function testes(){
 
 		$_SESSION['user_id'] = 1;
@@ -35,7 +44,7 @@ class Loja extends Controller{
 				$this->return['error'] .= "This store already exists.";
 				return;
 			}else{
-					if($this->model['Loja_model']->verifyUserStore(){
+					if($this->model['Loja_model']->verifyUserStore()){
 						$this->return['success'] = false;
 						$this->return['error'] .= "This user already owns a store.";
 					}else{
@@ -81,6 +90,9 @@ class Loja extends Controller{
 			return;
 		}
 	}
+
+
+
 }
 
 

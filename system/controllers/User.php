@@ -10,12 +10,20 @@ defined('BASE_PATH') OR exit('No direct script access allowed');
  */
 class User extends Controller
 {
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
 		$this->load_model('User_model');
 		$this->load_lib('Validation_lib');
 		$this->return = array('success' => true, 'error' => '');
+	}
+
+	public function listStores(){ //
+		$stores = $this->model['Loja_model']->listAllStore();
+		if(is_null($stores)){
+			$this->return['success'] = FALSE;
+		}else{
+			$this->return['lojas'] = $stores;
+		}
 	}
 
 	public function get_infos(){
@@ -93,7 +101,7 @@ class User extends Controller
 	}
 
 	public function activeAccount(){
-
+			//TODO: IMPLEMENTAR FORMATO DE ATIVAÇÃO VIA EMAIL E GET
 	}
 
 	public function signup(){
