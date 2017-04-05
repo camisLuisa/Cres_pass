@@ -18,6 +18,8 @@ class Loja_model extends Model
 			return NULL;
 		}
 		$this->select('user_store', "WHERE user_id = " . $_SESSION['user_id']);
+		$store_user = $this->get_result();
+		$this->select('store', "WHERE id = " . $store_user['store_id']);
 		return $this->get_result();
 	}
 
