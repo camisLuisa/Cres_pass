@@ -17,7 +17,7 @@ class Loja extends Controller{
 		$this->load_lib('Validation_lib');
 	}
 
-	public function get_infos(){ // 
+	public function get_infos(){ //
 		$store = $this->model['Loja_model']->logged_user();
 		if(is_null($store)) {
 			$this->return['success'] = FALSE;
@@ -33,7 +33,7 @@ class Loja extends Controller{
 		$this->criarLoja();
 	}
 
-	public function criarLoja(){
+	public function criarLoja($data=""){
 		$data = $this->get_post(); // JSON NOT SET
 		if(!isset($_SESSION['user_id'])){
 			$this->return['success'] = false;

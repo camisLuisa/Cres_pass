@@ -17,15 +17,6 @@ class User extends Controller
 		$this->return = array('success' => true, 'error' => '');
 	}
 
-	public function listStores(){ //
-		$stores = $this->model['Loja_model']->listAllStore();
-		if(is_null($stores)){
-			$this->return['success'] = FALSE;
-		}else{
-			$this->return['lojas'] = $stores;
-		}
-	}
-
 	public function get_infos(){
 		$user = $this->model['User_model']->logged_user();
 		if(is_null($user)){
@@ -52,7 +43,7 @@ class User extends Controller
 			exit();
 		}
 
-		$status = $this->passCheck($data['email'], $data['password']);
+		$status = $this->model['User_model']->passCheck($data['email'], $data['password']);
 
 		if(!$status){
 			exit();
@@ -143,15 +134,38 @@ class User extends Controller
 		}
 	}
 
-	private function busca_cep(){
-		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode('50721-200').'&formato=query_string');
+	public function editUser(){
+		if(!isset($_SESSION['user_id'])){
+			return;
+		}
+		$data = $this->get_post(); // get form data
+
+		$this->callForValidation($data);
+
+		if(!$this->return['success']){
+			return;
+		}
+
+		$status = $this->model['User_model']->update('user', $data, "WHERE id =". $data['id']);
+
+		if(!$status){
+			$this->return['success'] = FALSE;
+			$this->return['error'] .= "Erro ao alterar o user.";
+		}
+
+
+
+	}
+
+	private function busca_cep($cep){
+		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode($cep).'&formato=query_string');
     if(!$resultado){
         $resultado = "&resultado=0&resultado_txt=erro+ao+buscar+cep";
     }
 		parse_str($resultado, $retorno); // transforma string em um array com chaves
 		$this->return = $retorno;
 
-		print_r($this->return);
+		//print_r($this->return);
 	}
 
 	public function callForValidation($data){
