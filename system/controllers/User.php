@@ -14,7 +14,7 @@ class User extends Controller
 		parent::__construct();
 		$this->load_model('User_model');
 		$this->load_lib('Validation_lib');
-		$this->return = array('success' => true, 'error' => '');
+		$this->return = array('success' => TRUE, 'error' => '');
 	}
 
 	public function get_infos(){
@@ -101,8 +101,9 @@ class User extends Controller
 
 		$this->return = $this->callForValidation($data);
 
+
 		// Caso algum dos casos de invalidação, tenham ocorrido ele cancela o signup e retorna a mensagem de erro referente.
-		if($this->return['success'] == FALSE){
+		if(!is_null($this->return) && $this->return['success'] == FALSE){
 			echo "Saindo da inserção. ";
 			return;
 		}
@@ -223,7 +224,7 @@ class User extends Controller
 			}
 		}
 		if(isset($data['tel_1'])){
-			$status = $this->lib['Validation_lib']->validateNumber($data['tel_1']);
+			$status = $this->lib['Validation_lib']->validatePhone($data['tel_1']);
 			if(!$status){
 				$this->return['success'] = FALSE;
 				$this->return['error'] .= $data['tel_1'] . " contem formato incorreto. ";
@@ -237,7 +238,7 @@ class User extends Controller
 			}
 		}
 		if(isset($data['tel_2'])){
-			$status = $this->lib['Validation_lib']->validateNumber($data['tel_2']);
+			$status = $this->lib['Validation_lib']->validatePhone($data['tel_2']);
 			if(!$status){
 				$this->return['success'] = FALSE;
 				$this->return['error'] .= $data['tel_2'] . " contem formato incorreto. ";
