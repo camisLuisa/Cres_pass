@@ -1,7 +1,9 @@
-app.controller('PanelController', function($scope, $state, $http){
+app.controller('PanelController', function($scope, $state, $http, user){
+	user.onlyUsers();
 	
-	$scope.loadContent = function(state){
+	$scope.user = user.loadInfos();
 
+	$scope.loadContent = function(state){
 		switch(state){
 			case 'account':
 				$scope.contentTitle = 'Conta';
@@ -19,13 +21,13 @@ app.controller('PanelController', function($scope, $state, $http){
 		//$state.go(state);
 	};
 
-	$http.get('system/user/get_infos')
-	.then(function (response){
-		if(response.data.success){
-			$scope.user = response.data.user;
-		}
-		else{
-			console.log('No logged user');
-		}
-	});
+	// $http.get('system/user/get_infos')
+	// .then(function (response){
+	// 	if(response.data.success){
+	// 		$scope.user = response.data.user;
+	// 	}
+	// 	else{
+	// 		console.log('No logged user');
+	// 	}
+	// });
 });
