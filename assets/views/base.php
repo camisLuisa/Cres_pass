@@ -1,3 +1,9 @@
+<style type="text/css">
+.affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+</style>
 <!-- HEADER -->
 <div class="container-fluid">
 	<div class="row">
@@ -55,30 +61,30 @@
 </nav>
 <!-- END HEADER -->
 
-	<ui-view></ui-view>
+<ui-view></ui-view>
 
-	<!-- FOOTER -->
-	<div class="container-fluid footer">
-		<div class="row">
-			<p>O que voce procura?</p>
-			<ul>
-				<li>Acessórios</li>
-				<li>Alimentação</li>
-				<li>Banho e Higiene</li>
-				<li>Brinquedos</li>
-				<li>Cama e Decoração</li>
-				<li>Roupas</li>
-			</ul>
-		</div>
-		<div class="row">
-			<p>Formas de pagamento</p>
-			<div class="imageCartao"></div>
-		</div>
-		<div class="row copyright">
-			<p>&reg; Crescendo e Passando - 2017</p>
-		</div>
+<!-- FOOTER -->
+<div class="container-fluid footer">
+	<div class="row">
+		<p>O que voce procura?</p>
+		<ul>
+			<li>Acessórios</li>
+			<li>Alimentação</li>
+			<li>Banho e Higiene</li>
+			<li>Brinquedos</li>
+			<li>Cama e Decoração</li>
+			<li>Roupas</li>
+		</ul>
 	</div>
-	<!-- END FOOTER -->
+	<div class="row">
+		<p>Formas de pagamento</p>
+		<div class="imageCartao"></div>
+	</div>
+	<div class="row copyright">
+		<p>&reg; Crescendo e Passando - 2017</p>
+	</div>
+</div>
+<!-- END FOOTER -->
 
 <!-- LOGIN MODAL -->
 <modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">

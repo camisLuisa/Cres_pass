@@ -1,4 +1,4 @@
-<div class="container intro">
+<div class="container-fluid intro">
 	<div class="row">
 		<div class="col-md-6 introImg">
 			<img src="http://marcaespana.es/sites/default/files/actualidad/galerias/ninos_moda.jpg">
