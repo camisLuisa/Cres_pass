@@ -40,7 +40,7 @@
  * imports and links will not work.
  */
 
-$assets_folder = 'assets';
+$assets_folder = 'public';
 $include_file = 'includes';
 
 /* --------------------------------------------------
