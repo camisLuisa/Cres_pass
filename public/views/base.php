@@ -1,3 +1,6 @@
+<?php
+define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres_pass/public/img/');
+?>
 <style type="text/css">
 .affix ~ .container-fluid {
      position: relative;
@@ -8,7 +11,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 text-center">
-			<a href="http://localhost/Cres_pass/" title="crescendo e passando"><img class="img-responsive center-block img-circle" src="http://www.mibebeyyo.com/images/home/seguridad-objetos-cocina-1293.jpg" width="100" height="100"></a>
+			<a href="http://localhost/Cres_pass/" title="crescendo e passando"><img class="img-responsive center-block img-circle" src="<?= IMG_LINK ?>seguridad-objetos-cocina-1293.jpg" width="100" height="100"></a>
 		</div>
 	</div>
 </div>
