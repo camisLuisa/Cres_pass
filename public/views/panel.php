@@ -20,7 +20,7 @@
 					<p>{{user.email}}</p>
 				</button>
 				<button class="list-group-item" ng-click="loadContent('createStore')">
-					<i class="fa fa-home" aria-hidden="true"></i> CRIAR LOJINH
+					<i class="fa fa-home" aria-hidden="true"></i> CRIAR LOJINHA
 				</button>
 				<button class="list-group-item" ng-click="loadContent('purchaseHistory')">
 					<i class="fa fa-shopping-bag" aria-hidden="true"></i> HISTÓRICO DE COMPRAS
