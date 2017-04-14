@@ -158,8 +158,8 @@ class User extends Controller
 
 	}
 
-	private function busca_cep($cep){
-		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode($cep).'&formato=query_string');
+	public function busca_cep(){
+		$resultado = @file_get_contents('http://republicavirtual.com.br/web_cep.php?cep='.urlencode('50721-300').'&formato=query_string');
     if(!$resultado){
         $resultado = "&resultado=0&resultado_txt=erro+ao+buscar+cep";
     }

@@ -35,22 +35,29 @@ class Loja extends Controller{
 
 	public function criarLoja($data=""){
 		$data = $this->get_post(); // JSON NOT SET
+
+		//Se n existir usuário, n pode criar loja
 		if(!isset($_SESSION['user_id'])){
+
 			$this->return['success'] = false;
 			$this->return['error'] .= "Non-existent session.";
+
 		}else{	// Entrou e vai criar
-			if($this->model['Loja_model']->verifyStore($data['name'])){
+
+			if($this->model['Loja_model']->verifyStore($data['name'])){ //Se já existe a loja com esse nome
 				$this->return['success'] = false;
 				$this->return['error'] .= "This store already exists.";
 				return;
-			}else{
-					if($this->model['Loja_model']->verifyUserStore()){
+			}else{ // Caso n exista cria
+					if($this->model['Loja_model']->verifyUserStore()){ // verifica se usuario já possui loja
 						$this->return['success'] = false;
 						$this->return['error'] .= "This user already owns a store.";
 					}else{
 						$this->model['Loja_model']->insert('store', $data);
 						$lojaid = $this->model['Loja_model']->get_result();
-						if(isset($lojaid)){
+
+						if(isset($lojaid)){ // pega o id da loja adicionada
+							//cria um array com user id e id da loja criada e adiciona
 							$lojauser = array('user_id' => $_SESSION['user_id'], 'store_id' => $lojaid);
 							$this->model['Loja_model']->insert('user_store', $lojauser);
 						}
