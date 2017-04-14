@@ -18,6 +18,8 @@ app.controller('SignUpController', function($scope, $state, $http){
 			console.log('Erro!');
 		});
 
+		$scope.proximo;
+
 
 	};
 });
