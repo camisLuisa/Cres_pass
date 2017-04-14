@@ -30,7 +30,13 @@ class Produto extends Controller{
 		$data = $this->get_post(); // Json set
 		$this->callForValidation($data); // Validation of data
 
-		$this->model['Produto_model']->insert('product', $data);
+		//pega id do produto criado
+		$produtoID = $this->model['Produto_model']->insert('product', $data);
+		// cria array com os campos necessários, caso o store_id n seja armazenado
+		// no session mudar para $data['store_id']
+		$productStore = array('store_id'=>$_SESSION['store_id'],'product_id'=> $produtoID);
+		//
+		$this->model['Produto_model']->insert('store_product', $productStore);
 
 		if(!$this->model['Produto_model']->get_result()){
 			$this->return['success'] = false;
