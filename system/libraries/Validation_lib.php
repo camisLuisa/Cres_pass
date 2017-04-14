@@ -8,7 +8,7 @@ class Validation_lib extends Lib
 		parent::__construct();
 	}
 
-	
+
 
 	public function validateRG($rg){
 		$padrao = "/\A[0-9].[0-9]{3}.[0-9]{3}\z/";
@@ -71,7 +71,7 @@ class Validation_lib extends Lib
 
 	public function validatePhone($telefone){
 		// Allows 8 or 9 digits phone numbers
-		return preg_match("/\A[0-9]{4,5}-[0-9]{4}\z/", $telefone);
+		return preg_match("/\A[0-9]{4,5}\-[0-9]{4}\z/", $telefone);
 	}
 
 	public function validateDDD($ddd){
