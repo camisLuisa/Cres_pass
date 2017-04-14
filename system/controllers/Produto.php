@@ -40,7 +40,7 @@ class Produto extends Controller{
 
 		if(!$this->model['Produto_model']->get_result()){
 			$this->return['success'] = false;
-			$this->return['error'] .= 'An error happened during the product creating process.'
+			$this->return['error'] .= 'An error happened during the product creating process.';
 		}
 
 	}
@@ -60,13 +60,33 @@ class Produto extends Controller{
 
 	public function removerProduto(){
 		$data = $this->get_post();
-		$this-model['Produto_model']->delete('product', "WHERE id ='" . $data['id'] . "'");
+		$this->model['Produto_model']->delete('product', "WHERE id ='" . $data['id'] . "'");
 	}
 
 	public function consultarProduto($nameProduct){
 		$this->model['Produto_model']->select('produtos', "WHERE name = '" . $nameProduct . "'");
 		$produtos = $this->model['Produto_model']->get_result();
 		$this->return['produtos'] = $produtos;
+	}
+
+	public function showStoreProducts(){
+		//$data = $this->get_post(); // $_SESSION['store_id'];
+		$data['store_id'] = 1;
+		$status = $this->model['Produto_model']->select('store_product', "WHERE store_id = '" . $data['store_id'] ."'" , "product_id");
+		if($status){
+			$this->showProducts($this->model['Produto_model']->get_result());
+			//$this->return['produtos'] = $this->model['Produto_model']->get_result();
+		}else{
+			$this->return['success'] = FALSE;
+		}
+	}
+
+	public function showProducts($ids){
+		for($x = 0; $x < count($ids); $x++){
+			$this->model['Produto_model']->select('product', "WHERE id = '" . $ids[$x]['product_id'] . "'");
+			$this->return['produtos'][$x] = $this->model['Produto_model']->get_result();
+		}
+		var_dump($this->return);
 	}
 
 }
