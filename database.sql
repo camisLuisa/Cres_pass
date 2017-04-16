@@ -80,25 +80,11 @@ CREATE TABLE IF NOT EXISTS `user_store`(
  */
 CREATE TABLE IF NOT EXISTS `product`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(50) NOT NULL UNIQUE
-)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
-
-/* --------------------------------------------------
- * TABLE `store_product`
- * --------------------------------------------------
- */
-CREATE TABLE IF NOT EXISTS `store_product`(
-	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL UNIQUE,
 	`store_id` INT(11) NOT NULL,
-	`product_id` INT(11) NOT NULL,
 	CONSTRAINT `fk_store_product_store_id`
 		FOREIGN KEY (`store_id`)
 		REFERENCES `store`(`id`)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE,
-	CONSTRAINT `fk_store_product_product_id`
-		FOREIGN KEY (`product_id`)
-		REFERENCES `product`(`id`)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
