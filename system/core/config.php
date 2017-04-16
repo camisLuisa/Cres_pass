@@ -39,3 +39,8 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'crescend_main_db');
+
+define('PRODUCT_TABLE', 'product');
+define('STORES_TABLE', 'store');
+define('USER_TABLE', 'user');
+define('USER_STORE_TABLE', 'user_store');
