@@ -40,7 +40,7 @@
  * imports and links will not work.
  */
 
-$assets_folder = 'assets';
+$assets_folder = 'public';
 $include_file = 'includes';
 
 /* --------------------------------------------------
@@ -130,6 +130,4 @@ require_once ASSETS_PATH.$include_file.'.php';
 	<!-- ANGULAR ROUTE BASE -->
 	<base href=<?= "/".$localhost_suffix."/" ?>>
 </head>
-<?php include ASSETS_PATH.'views'.DIRECTORY_SEPARATOR.'header.php'; ?>
-<ng-view></ng-view>
-<?php include ASSETS_PATH.'views'.DIRECTORY_SEPARATOR.'footer.php'; ?>
+<ui-view></ui-view>

@@ -4,21 +4,9 @@
  * Drop any database with the same name and
  * create a new one and select it.
  */
-DROP DATABASE IF EXISTS `cres_pass`;
-CREATE DATABASE `cres_pass` CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `cres_pass`;
-
-/* --------------------------------------------------
- * TABLE `test`
- * --------------------------------------------------
- * Use this table for testing.
- */
-CREATE TABLE IF NOT EXISTS `test`(
-	`test_id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`test_name` VARCHAR(50) NULL DEFAULT NULL
-)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
-
-INSERT INTO `test` (`test_name`) VALUES ('teste1'),('teste2'),('teste3'),('teste4'),('teste5');
+DROP DATABASE IF EXISTS `crescend_main_db`;
+CREATE DATABASE `crescend_main_db` CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `crescend_main_db`;
 
 /* --------------------------------------------------
  * TABLE `user`
@@ -76,10 +64,14 @@ CREATE TABLE IF NOT EXISTS `user_store`(
 	`store_id` INT(11) NOT NULL,
 	CONSTRAINT `fk_user_store_user_id`
 		FOREIGN KEY (`user_id`)
-		REFERENCES `user`(`id`),
+		REFERENCES `user`(`id`)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
 	CONSTRAINT `fk_user_store_store_id`
 		FOREIGN KEY (`store_id`)
 		REFERENCES `store`(`id`)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 /* --------------------------------------------------
@@ -88,21 +80,11 @@ CREATE TABLE IF NOT EXISTS `user_store`(
  */
 CREATE TABLE IF NOT EXISTS `product`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(50) NOT NULL UNIQUE
-)ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
-
-/* --------------------------------------------------
- * TABLE `store_product`
- * --------------------------------------------------
- */
-CREATE TABLE IF NOT EXISTS `store_product`(
-	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL UNIQUE,
 	`store_id` INT(11) NOT NULL,
-	`product_id` INT(11) NOT NULL,
 	CONSTRAINT `fk_store_product_store_id`
 		FOREIGN KEY (`store_id`)
-		REFERENCES `store`(`id`),
-	CONSTRAINT `fk_store_product_product_id`
-		FOREIGN KEY (`product_id`)
-		REFERENCES `product`(`id`)
+		REFERENCES `store`(`id`)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;

@@ -1,7 +1,10 @@
-<div class="container intro">
+<?php
+define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres_pass/public/img/');
+?>
+<div class="container-fluid intro">
 	<div class="row">
 		<div class="col-md-6 introImg">
-			<img src="http://marcaespana.es/sites/default/files/actualidad/galerias/ninos_moda.jpg">
+			<img src="<?= IMG_LINK ?>ninos_moda.jpg">
 		</div>
 		<div class="col-md-6 introTxt">
 			<h1>Lorem Ipsum</h1>
@@ -27,7 +30,7 @@
 	</ul>
 	<div class="row">
 		<div class="col-md-3">
-			<img src="http://www.ficoupequeno.com/lojinhas/troca-bacana/1610259691_vitrine.jpg"> <!-- IMAGEM -->
+			<img src="<?= IMG_LINK ?>1610259691_vitrine.jpg"> <!-- IMAGEM -->
 			<p>Loja Tal</p> <!-- NOME DA LOJA -->
 			<h4>Produto Tal</h4> <!-- NOME DO PRODUTO -->
 			<p>Marca Tal</p> <!-- Marca DO PRODUTO -->
@@ -44,7 +47,7 @@
 		<h1>Lojinhas em Destaque</h1><hr>
 		<div class="row">
 			<div class="col-md-3">
-				<img src="http://www.ficoupequeno.com/foto-perfil/160704172434788.jpg"> <!-- IMAGEM -->
+				<img src="<?= IMG_LINK ?>160704172434788.jpg"> <!-- IMAGEM -->
 				<h5>Loja Tal</h5> <!-- NOME DA LOJA -->
 				<p>00 publicados</p> <!-- QTD DE PRODUTO -->
 				<p>00 vendidos Tal</p> <!-- QTD VENDIDA -->

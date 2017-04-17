@@ -8,10 +8,10 @@ class Validation_lib extends Lib
 		parent::__construct();
 	}
 
-	
+
 
 	public function validateRG($rg){
-		$padrao = "/\A[0-9]{7}\z/";
+		$padrao = "/\A[0-9].[0-9]{3}.[0-9]{3}\z/";
 		return preg_match($padrao, $rg);
 	}
 
@@ -36,7 +36,7 @@ class Validation_lib extends Lib
 		// [a-z] a to z group
 		// + * or {0,} quantifiers to set the number of digits i would want
 		// since only letters should be allowed, a to z and + after
- 		$padrao = "/\A[a-z]+\z/";
+ 		$padrao = "/\A[A-z]+\z/";
     	return preg_match($padrao, $name);
  	}
 
@@ -65,18 +65,18 @@ class Validation_lib extends Lib
 	public function validateCPF($cpf){
 		// Format xxx xxx xxx xx
 		// 11 numbers without space
-		$padrao = "/\A\d{11}\z/";
+		$padrao = "/\A[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}\z/";
 		return preg_match($padrao, $cpf);
 	}
 
 	public function validatePhone($telefone){
 		// Allows 8 or 9 digits phone numbers
-		return preg_match("/\A[0-9]{8,9}$\z/", $telefone);
+		return preg_match("/\A[0-9]{4,5}\-[0-9]{4}\z/", $telefone);
 	}
 
 	public function validateDDD($ddd){
 		//allows only ddd with 2 digits
-		$padrao = "/\A[0-9]{2}\z/";
+		$padrao = "/\A[0-9]{2,3}\z/";
 		return preg_match($padrao, $ddd);
 	}
 

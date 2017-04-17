@@ -1,4 +1,4 @@
-app.controller('SignUpController', function($scope, $location, $routeParams, $http){
+app.controller('SignUpController', function($scope, $state, $http){
 
 	$scope.signup = function(field) {
 
@@ -17,6 +17,8 @@ app.controller('SignUpController', function($scope, $location, $routeParams, $ht
 		}).catch(function(error) {
 			console.log('Erro!');
 		});
+
+		$scope.proximo;
 
 
 	};
