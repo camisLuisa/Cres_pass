@@ -18,7 +18,7 @@ app.controller('PanelController', function($scope, $state, $http, user){
 				$scope.contentTitle = 'Cadastro';
 				break;
 		}
-		//$state.go(state);
+		$state.go('base.panel.'+state);
 	};
 
 	// $http.get('system/user/get_infos')
