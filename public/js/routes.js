@@ -29,6 +29,13 @@ app.config(function($stateProvider, $locationProvider, $urlRouterProvider){
 		templateUrl: viewsPath+'panel.php',
 		controller: 'PanelController'
 	})
+
+	.state({
+		name: 'base.panel.signup',
+		url: '/signupEdit',
+		templateUrl: viewsPath+'signupEdit.php',
+		controller: 'SignUpEditController'
+	})
 	;
 
  	$urlRouterProvider.otherwise('/');

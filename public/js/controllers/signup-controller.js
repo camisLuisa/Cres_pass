@@ -18,7 +18,7 @@ app.controller('SignUpController', function($scope, $state, $http){
 			console.log('Erro!');
 		});
 
-		$scope.proximo;
+		$scope.proximo;/*variavel para transição da etapa de cadastro*/
 
 
 	};
