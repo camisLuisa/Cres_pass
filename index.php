@@ -82,6 +82,9 @@ require_once ASSETS_PATH.$include_file.'.php';
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
+	<script type="text/javascript">
+		Window.PUBLIC_FOLDER_BASE_LINK = "<?=ASSETS_LINK?>";
+	</script>
 	<meta charset="utf-8">
 	<!--<link rel="icon" href="img/favicon.png" />-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
