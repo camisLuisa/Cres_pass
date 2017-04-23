@@ -26,15 +26,20 @@ class Loja extends Controller{
 		}
 	}
 
-	public function testes(){
+	public function test(){
 
-		$_SESSION['user_id'] = 1;
-		//session_unset();
-		$this->criarLoja();
 	}
 
-	public function criarLoja($data=""){
-		$data = $this->get_post(); // JSON NOT SET
+	public function criarLoja($data=null){
+
+		if(is_null($data)){
+				$data = $this->get_post(); // JSON NOT SET
+				if(is_null($data)){
+					$this->return['success'] = FALSE;
+					$this->return['error'] .= "Data not set.";
+					return;
+				}
+		}
 
 		//Se n existir usuário, n pode criar loja
 		if(!isset($_SESSION['user_id'])){
@@ -66,16 +71,17 @@ class Loja extends Controller{
 			}
 		}
 
-	public function removerLoja(){
+	public function removerLoja($id=""){
 		//$data = $this->get_post();
 		if(!isset($_SESSION['user_id'])){
 			$this->return['success'] = false;
 			$this->return['error'] .= "Non-existent session.";
 		}else{
-			if($this->model['Loja_model']->verifyUserStore($id)){// LOJA CHECK
+			if($this->model['Loja_model']->verifyUserStore($_SESSION['user_id'])){// LOJA CHECK
 				$loja = $this->model['Loja_model']->get_result();
+				// recebe o id da loja que pertence ao usuario.
 				$storeid =	$loja['store_id'];
-
+				// verifica se a loja existe
 				if($this->model['Loja_model']->verifyStore($storeid)){
 					//deletar da base de dados de lojas
 					$this->model['Loja_model']->delete('store',"WHERE id = '" . $storeid . "'");
@@ -93,9 +99,27 @@ class Loja extends Controller{
 		$data = $this->get_post();
 		$id = $_SESSION['user_id'];
 		if(!isset($id)){
-			$this->setReturn(array('status'=>false, 'msg' => 'Non existent session.'));
+			$this->return['success'] = FALSE;
+			$this->return['error'] .= "Sessao inexistente.";
 			return;
+		}else{
+			// Verifica existência da loja no usuário.
+			if($this->model['Loja_model']->verifyUserStore($id)){
+				$loja = $this->model['Loja_model']->get_result();
+				// Recebe o id da loja que pertence ao usuário logado
+				$storeid = $loja['store_id'];
+				// Verifica se a loja existe
+				if($this->model['Loja_model']->verifyStore($storeid)){
+					//Altera no banco de dados
+					$this->model['Loja_model']->update('store', $data, "WHERE id = '" . $storeid . "'");
+				}else{
+					$this->return['success'] = FALSE;
+					$this->return['error'] .= "Não existe a loja."
+				}
+			}
 		}
+
+
 	}
 
 
