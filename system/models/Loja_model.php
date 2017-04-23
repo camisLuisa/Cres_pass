@@ -26,7 +26,7 @@ class Loja_model extends Model
 	//Verificações de dad0s
 
 	public function verifyStore($store){
-		 if($this->select('store', "WHERE name = '" . $store . "'")){
+		 if($this->select('store', "WHERE id = '" . $store . "'")){
 		 	return true;
 		 }else{
 		 	return false;
