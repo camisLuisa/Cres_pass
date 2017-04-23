@@ -15,33 +15,24 @@ class Carrinho extends Controller
 		parent::__construct();
 		$this->load_model('Carrinho_model');
 		$this->return = array('success' => TRUE, 'error' => "");
-		if(isset($_SESSION['user_id'])){
-			$i = 0;
-		}
-    $shopcart = array();
+		$_SESSION['shopcart'] = array();
+
 
 		//$this->load_lib('Carrinho_lib');
 	}
 
 	public function test(){ //
-
+		
 	}
 
   public function addProduct($id){
-    $shopcart[$i] = $this->model['Carrinho_model']->getProduct($id);
-    if(!isset($shopcart[i])){
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Erro ao adicionar.";
-      return;
-    }else{
-			$i++;
-		}
+    $shopcart[] = $this->model['Carrinho_model']->getProduct($id);
   }
-  public function removeProduct($id){
-		
+  public function removeProduct($index){
+		unset($_SESSION['shopcart'][$index]);
   }
-  public function changeQuantity(){
-
+  public function changeQuantity($index, $quantity){
+		$_SESSION['shopcart'][$index]['quantidade'] = $quantity;
   }
 
 
