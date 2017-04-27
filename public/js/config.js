@@ -1,10 +1,10 @@
 /* ------------------------------
- * 
+ *
  * ------------------------------
  */
-app.config(function($stateProvider, $locationProvider, $urlRouterProvider){
+app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRouterProvider){
  	$locationProvider.html5Mode(true);
- 	
+
 	/*Constant paths to public sub-folders*/
  	$pathToProvider
 		.addPath({
