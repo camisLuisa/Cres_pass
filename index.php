@@ -50,7 +50,7 @@ $include_file = 'includes';
  * or leave to system do it.
  *
  * If you are in localhost and uses a suffix in host
- * name, then define it here. If theres no suffix, 
+ * name, then define it here. If theres no suffix,
  * set an empty string.
  * Ex.:
  *		For http://localhost/folder/
@@ -60,7 +60,7 @@ $include_file = 'includes';
  *		Use $localhost_suffix = '';
  */
 
-$localhost_suffix = 'Cres_pass';
+$localhost_suffix = 'cres_pass';
 $host_name = $_SERVER['HTTP_HOST'];
 
 /* --------------------------------------------------
@@ -107,7 +107,7 @@ require_once ASSETS_PATH.$include_file.'.php';
 	 * $k2 is a folder name if $v2 is an array;
 	 * $k2 is a number if $v2 is a filename;
 	 * If $v2 is an array each $file is a file name;
-	 * 
+	 *
 	 * Ex.:
 	 * $k1.'/'.$v2.'.'.$k1 can be css/style.css
 	 * $k1.'/'.$k2.'/'.$file.'.'.$k1 can be js/controllers/homeController.js
