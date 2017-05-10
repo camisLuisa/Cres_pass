@@ -1,19 +1,19 @@
 <?php
 defined('BASE_PATH') OR exit('No direct script access allowed');
 
-class Loja_model extends Model
+class Store_model extends Model
 {
 	function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function listAllStores(){ // retorna um array com todas as lojas do banco de dados
+	public function listAllStores(){ // retorna um array com todas as stores do banco de dados
 		$this->select('store', "WHERE = 1");
 		return $this->get_result();
 	}
 
-	public function logged_user(){ // retorna a loja do user logado
+	public function logged_user(){ // retorna a store do user logado
 		if(!isset($_SESSION['user_id'])){
 			return NULL;
 		}
