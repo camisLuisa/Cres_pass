@@ -11,7 +11,7 @@
 		flex-direction: column;
 	}
 </style>
-<div class="container-fluid">
+<div class="container-fluid" ng-init="contentTitle='Cadastro'">
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="list-group">
@@ -19,7 +19,7 @@
 					<h3>Olá {{user.name}}</h3>
 					<p>{{user.email}}</p>
 				</button>
-				<button class="list-group-item" ng-click="loadContent('createStore')">
+				<button class="list-group-item" ng-click="loadContent('storeCreate')">
 					<i class="fa fa-home" aria-hidden="true"></i> CRIAR LOJINHA
 				</button>
 				<button class="list-group-item" ng-click="loadContent('purchaseHistory')">

@@ -45,15 +45,18 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 	})
 	.state({
 		name: 'base.panel',
-		url: '/painel',
 		templateUrl: pathTo.viewsFolder+'panel.php',
 		controller: 'PanelController'
 	})
-
 	.state({
 		name: 'base.panel.signup',
-		url: '/signupEdit',
 		templateUrl: pathTo.viewsFolder+'signupEdit.php',
+		controller: 'SignUpEditController'
+	})
+	.state({
+		name: 'base.panel.storeCreate',
+		url: '/painel',
+		templateUrl: pathTo.viewsFolder+'storeCreate.php',
 		controller: 'SignUpEditController'
 	})
 	;
