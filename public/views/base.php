@@ -1,13 +1,77 @@
-<?php
-define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres_pass/public/img/');
-?>
+<div class="navbar-fixed-top">
+	<div class="w3-container w3-light-blue">
+		<div class="w3-content w3-center w3-padding-16">
+			<div class="w3-row-padding">
+				<div class="w3-col m3 hidden-xs">
+					<a href="<?php echo $_SERVER['HTTP_HOST'] ?>" title="crescendo e passando">
+					<img class="img-responsive center-block img-circle" src="{{imgFolder}}seguridad-objetos-cocina-1293.jpg" width="100" height="100">
+					</a>
+				</div>
+				<div class="w3-col m6">
+					<form ng-submit="search(searchInput)">
+						<div class="input-group">
+							<input ng-model="searchInput" type="text" class="form-control" placeholder="Procure...">
+							<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit"><span class="fa fa-search"></span></button>
+							</span>
+						</div>
+					</form>
+				</div>
+				<div class="w3-col m3">
+					<a href="">LOGIN</a> ou faça já o seu <a href="">CADASTRO</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar -->
+	<div class="w3-container w3-white">
+		<div class="w3-content">
+			<div class="w3-bar hidden-xs">
+				<a href="#" class="w3-bar-item w3-mobile w3-button">Produtos</a>
+				<div class="w3-dropdown-hover w3-mobile">
+					<button class="w3-button ">Dropdown</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">Link 1</a>
+						<a href="#" class="w3-bar-item w3-button">Link 2</a>
+						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</div>
+				<a href="#" class="w3-bar-item w3-mobile w3-button">Link 1</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Content -->
+<div class="w3-container w3-mobile margin-fixed-top">
+	<ui-view></ui-view>
+</div>
+<div class="w3-container footer">
+	<div class="row">
+		<p>O que voce procura?</p>
+		<ul>
+			<li>Acessórios</li>
+			<li>Alimentação</li>
+			<li>Banho e Higiene</li>
+			<li>Brinquedos</li>
+			<li>Cama e Decoração</li>
+			<li>Roupas</li>
+		</ul>
+	</div>
+	<div class="row">
+		<p>Formas de pagamento</p>
+		<div class="imageCartao"></div>
+	</div>
+	<div class="row copyright">
+		<p>&reg; Crescendo e Passando - 2017</p>
+	</div>
+</div>
+<!--
 <style type="text/css">
 .affix ~ .container-fluid {
-     position: relative;
-     top: 50px;
+	 position: relative;
+	 top: 50px;
   }
 </style>
-<!-- HEADER -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 text-center">
@@ -62,11 +126,9 @@ define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres
 		<a ng-click="go('base.signup')">CADASTRO</a>
 	</div> 
 </nav>
-<!-- END HEADER -->
 
 <ui-view></ui-view>
 
-<!-- FOOTER -->
 <div class="container-fluid footer">
 	<div class="row">
 		<p>O que voce procura?</p>
@@ -87,9 +149,7 @@ define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres
 		<p>&reg; Crescendo e Passando - 2017</p>
 	</div>
 </div>
-<!-- END FOOTER -->
 
-<!-- LOGIN MODAL -->
 <modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">
 	<form name="Form" ng-submit="login(input)">
 		<label>Email</label>
@@ -108,15 +168,14 @@ define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres
 		<button class="btn btn-primary btn-block" type="submit">Acessar</button>
 	</form>
 </modal>
-<!-- END LOGIN MODAL -->
 
-<!-- Nav bar icon toggler -->
 <script type="text/javascript">
 	$('#myNavbar').on('shown.bs.collapse', function () {
-       $("#toggleIcon").removeClass("fa-caret-square-o-down").addClass("fa-caret-square-o-up");
-    });
+	   $("#toggleIcon").removeClass("fa-caret-square-o-down").addClass("fa-caret-square-o-up");
+	});
 
-    $('#myNavbar').on('hidden.bs.collapse', function () {
-       $("#toggleIcon").removeClass("fa-caret-square-o-up").addClass("fa-caret-square-o-down");
-    });
+	$('#myNavbar').on('hidden.bs.collapse', function () {
+	   $("#toggleIcon").removeClass("fa-caret-square-o-up").addClass("fa-caret-square-o-down");
+	});
 </script>
+-->

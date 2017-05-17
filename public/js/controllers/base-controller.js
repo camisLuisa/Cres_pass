@@ -1,4 +1,6 @@
-app.controller('BaseController', function($scope, $state, $http){
+app.controller('BaseController', function($scope, $state, $http, $pathTo){
+	$scope.imgFolder = $pathTo.imgFolder;
+
 	$scope.go = function(state) {
 		$state.go(state);
 	}
@@ -31,4 +33,7 @@ app.controller('BaseController', function($scope, $state, $http){
 			console.log('Erro!');
 		});
 	};
+	$(document).ready(function(){
+		$(".margin-fixed-top").css("margin-top",$(".navbar-fixed-top").height()+"px");
+	});
 });

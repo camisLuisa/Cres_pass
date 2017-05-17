@@ -19,6 +19,10 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 		.addPath({
 			name:"viewsFolder",
 			folder:"views"
+		})
+		.addPath({
+			name:"imgFolder",
+			folder:"img"
 		});
 
 	/*Getting the paths defined by pathToProvider*/
