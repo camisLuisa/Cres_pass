@@ -18,7 +18,7 @@
 					</form>
 				</div>
 				<div class="w3-col m3">
-					<a href="">LOGIN</a> ou faça já o seu <a href="">CADASTRO</a>
+					<a data-toggle="modal" data-target="#loginModal">LOGIN</a> ou faça já o seu <a href="">CADASTRO</a>
 				</div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 		<p>&reg; Crescendo e Passando - 2017</p>
 	</div>
 </div>
-
+-->
 <modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">
 	<form name="Form" ng-submit="login(input)">
 		<label>Email</label>
@@ -178,4 +178,3 @@
 	   $("#toggleIcon").removeClass("fa-caret-square-o-up").addClass("fa-caret-square-o-down");
 	});
 </script>
--->
