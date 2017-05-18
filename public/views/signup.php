@@ -29,7 +29,7 @@
 						<span ng-if="form1.ddd11.$error.required">Este campo é obrigatório</span>
 					</div>
 
-					<input name="tel11" type="tel" class="form-control" id="tel1" maxlength="11" placeholder="telefone fixo" required ng-model="field.tel_1" mask ="9999-9999">
+					<input name="tel11" type="tel" class="form-control" id="tel1" maxlength="11" placeholder="telefone fixo" required ng-model="field.tel_1" mask ="9999-99999">
 					<div ng-if="(form1.tel11.$touched || form1.$submitted) && form1.tel11.$invalid">
 						<span ng-if="form1.tel11.$error.required">Este campo é obrigatório</span>
 					</div>
