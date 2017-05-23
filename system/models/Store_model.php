@@ -17,9 +17,9 @@ class Store_model extends Model
 		if(!isset($_SESSION['user_id'])){
 			return NULL;
 		}
-		$this->select('user_store', "WHERE user_id = " . $_SESSION['user_id']);
+		$this->select('user_store', "WHERE `user_id` = '".$_SESSION['user_id']."'");
 		$store_user = $this->get_result();
-		$this->select('store', "WHERE id = " . $store_user['store_id']);
+		$this->select('store', "WHERE `id` = '".$store_user['store_id']."'");
 		return $this->get_result();
 	}
 
