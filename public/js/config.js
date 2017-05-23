@@ -59,9 +59,14 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 		controller: 'SignUpController'
 	})
 	.state({
-		name: 'base.panel.storeCreate',
-		templateUrl: pathTo.viewsFolder+'storeCreate.php',
-		controller: 'StoreCreateController'
+		name: 'base.panel.editStore',
+		templateUrl: pathTo.viewsFolder+'editStore.php',
+		controller: 'EditStoreController'
+	})
+	.state({
+		name: 'base.panel.createStore',
+		templateUrl: pathTo.viewsFolder+'createStore.php',
+		controller: 'CreateStoreController'
 	})
 	;
 

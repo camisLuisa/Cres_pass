@@ -17,19 +17,14 @@ class Store extends Controller{
 
 	public function get_infos(){
 		$store = $this->model['Store_model']->logged_user();
-		if(is_null($store)) {
-			$this->return['success'] = FALSE;
-			$this->return['error'] .= "Error on find logged user store\n";
-		} else {
-			$this->return['store'] = $store;
-		}
+		$this->return['store'] = $store;
 	}
 
 	public function test(){
 
 	}
 
-	public function criarStore(){
+	public function createStore(){
 		$data = $this->get_post();
 		if(is_null($data)){
 			$this->return['success'] = FALSE;
@@ -42,7 +37,6 @@ class Store extends Controller{
 			if($this->model['Store_model']->verifyStore($data['name'])){
 				$this->return['success'] = false;
 				$this->return['error'] .= "This store already exists.";
-				return;
 			}else{ // Caso n exista cria
 					if($this->model['Store_model']->verifyUserStore()){ // verifica se usuario já possui store
 						$this->return['success'] = false;
@@ -104,7 +98,7 @@ class Store extends Controller{
 					$this->model['Store_model']->update('store', $data, "WHERE id = '" . $storeid . "'");
 				}else{
 					$this->return['success'] = FALSE;
-					$this->return['error'] .= "Não existe a store."
+					$this->return['error'] .= "Não existe a store.";
 				}
 			}
 		}
