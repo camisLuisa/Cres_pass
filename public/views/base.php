@@ -1,4 +1,4 @@
-<div class="navbar-fixed-top">
+<div id="fixed-header" class="navbar-fixed-top">
 	<div class="w3-container w3-light-blue">
 		<div class="w3-content w3-center w3-padding-16">
 			<div class="w3-row-padding">
@@ -18,7 +18,7 @@
 					</form>
 				</div>
 				<div class="w3-col m3">
-					<a data-toggle="modal" data-target="#loginModal">LOGIN</a> ou faça já o seu <a href="">CADASTRO</a>
+					<a data-toggle="modal" data-target="#loginModal">LOGIN</a> ou faça já o seu <a ui-sref="base.signup">CADASTRO</a>
 				</div>
 			</div>
 		</div>

@@ -16,10 +16,6 @@ app.controller('BaseController', function($scope, $state, $http, $pathTo){
 	};
 
 	$scope.login = function(input) {
-		// $scope.Form.$setDirty();
-		// if ($scope.Form.$invalid) {
-		// 	return;
-		// }
 		$http.post('system/user/login', input)
 		.then(function(response) {
 			if (response.data.success) {
@@ -33,7 +29,17 @@ app.controller('BaseController', function($scope, $state, $http, $pathTo){
 			console.log('Erro!');
 		});
 	};
+	
+	// Add top margin to elements bellow the fixed header based on its height
+	var marginTopSize = $("#fixed-header").height()+(isMobile()?0:50);
 	$(document).ready(function(){
-		$(".margin-fixed-top").css("margin-top",$(".navbar-fixed-top").height()+"px");
+		$(".margin-fixed-top").css("margin-top",marginTopSize+"px");
 	});
 });
+
+function isMobile()
+{
+	var userAgent = navigator.userAgent.toLowerCase();
+	if( userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i)!= -1 )
+		return true;
+}

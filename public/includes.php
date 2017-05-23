@@ -53,7 +53,9 @@ $load['js']['controllers'][] = 'base-controller';
 $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'panel-controller';
 $load['js']['controllers'][] = 'signup-controller';
-$load['js']['controllers'][] = 'signupedit-controller';
+$load['js']['controllers'][] = 'signupEdit-controller';
+$load['js']['controllers'][] = 'store-create-controller';
+
 
 
 
