@@ -1,4 +1,4 @@
-app.controller('CreateStoreController', function($scope,$http){
+app.controller('PanelCreateStoreController', function($scope,$http,$state){
 
 	$scope.submitForm = function(fields){
 		$scope.storeCreateForm.$setDirty();
@@ -7,16 +7,12 @@ app.controller('CreateStoreController', function($scope,$http){
 			.then(function(response){
 				if (response.data.success) {
 					console.log('Loja criada');
+					$state.go('root.panel.home', {}, {reload:true});
 				}
 				else console.log(response.data.error);
 			}, function(response){
 				console.log("HTTP ERROR #"+response.statusText+": "+response.status);
 			});
 		}
-	};
-
-	//Show on view the link that will be created for the store 
-	$scope.parseToLink = function(str){
-		return (str)?str.replace(/ /gi,'-').toLowerCase():null;
 	};
 });

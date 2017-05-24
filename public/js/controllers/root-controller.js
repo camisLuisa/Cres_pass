@@ -1,26 +1,29 @@
-app.controller('BaseController', function($scope, $state, $http, $pathTo){
+app.controller('RootController', function($scope, $state, $http, $pathTo, $rootScope){
 	$scope.imgFolder = $pathTo.imgFolder;
+
+	//Show on view the link that will be created for the store 
+	$rootScope.parseToLink = function(str){
+		return (str)?str.replace(/ /gi,'-').toLowerCase():null;
+	};
+	
+	$http.get("system/User/get_infos").then(function(response){
+		$rootScope.user = response.data.user;	
+		$http.get("system/Store/get_infos").then(function(response){
+			$rootScope.user.store = response.data.store;
+			console.log($rootScope.user);
+		});
+	});
 
 	$scope.go = function(state) {
 		$state.go(state);
 	}
-
-	$scope.search = function(input) {
-		// $http.post('url', input)
-		// .then(function(response){
-		// 	console.log(input);
-		// }).catch(function(erro){
-		// 	console.log(input);
-		// });
-		console.log(input);
-	};
 
 	$scope.login = function(input) {
 		$http.post('system/user/login', input)
 		.then(function(response) {
 			if (response.data.success) {
 				$('#loginModal').modal('hide');
-				$state.go('base.panel');
+				$state.go('root.panel');
 			}
 			else{
 				console.log(response.data.error);
@@ -31,7 +34,7 @@ app.controller('BaseController', function($scope, $state, $http, $pathTo){
 	};
 	
 	// Add top margin to elements bellow the fixed header based on its height
-	var marginTopSize = $("#fixed-header").height()+(isMobile()?0:50);
+	var marginTopSize = $("#fixed-header").height()+(isMobile()?0:60);
 	$(document).ready(function(){
 		$(".margin-fixed-top").css("margin-top",marginTopSize+"px");
 	});

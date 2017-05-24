@@ -31,42 +31,47 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 	/*UI-Router states*/
 	$stateProvider
 	.state({
-		name: 'base',
-		templateUrl: pathTo.viewsFolder+'base.php',
-		controller: 'BaseController'
+		name: 'root',
+		templateUrl: pathTo.viewsFolder+'root.php',
+		controller: 'RootController'
 	})
 	.state({
-		name: 'base.home',
+		name: 'root.home',
 		url: '/',
 		templateUrl: pathTo.viewsFolder+'home.php',
 		controller: 'HomeController'
 	})
 	.state({
-		name: 'base.signup',
+		name: 'root.signup',
 		url: '/cadastro',
 		templateUrl: pathTo.viewsFolder+'signup.php',
 		controller: 'SignUpController'
 	})
 	.state({
-		name: 'base.panel',
-		url: '/painel',
+		name: 'root.panel',
 		templateUrl: pathTo.viewsFolder+'panel.php',
 		controller: 'PanelController'
 	})
 	.state({
-		name: 'base.panel.signup',
-		templateUrl: pathTo.viewsFolder+'signup.php',
-		controller: 'SignUpController'
+		name: 'root.panel.home',
+		url: '/painel',
+		templateUrl: pathTo.viewsFolder+'panelHome.php',
+		controller: 'PanelHomeController'
 	})
 	.state({
-		name: 'base.panel.editStore',
-		templateUrl: pathTo.viewsFolder+'editStore.php',
-		controller: 'EditStoreController'
+		name: 'root.panel.products',
+		templateUrl: pathTo.viewsFolder+'panelProducts.php',
+		controller: 'PanelProductsController'
 	})
 	.state({
-		name: 'base.panel.createStore',
-		templateUrl: pathTo.viewsFolder+'createStore.php',
-		controller: 'CreateStoreController'
+		name: 'root.panel.signup',
+		templateUrl: pathTo.viewsFolder+'panelSignup.php',
+		controller: 'PanelSignupController'
+	})
+	.state({
+		name: 'root.panel.createStore',
+		templateUrl: pathTo.viewsFolder+'panelCreateStore.php',
+		controller: 'PanelCreateStoreController'
 	})
 	;
 
