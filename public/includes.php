@@ -49,12 +49,13 @@ $load['js'][] = 'directives';
  * assets/js/controllers/
  * --------------------------------------------------
  */
-$load['js']['controllers'][] = 'base-controller';
+$load['js']['controllers'][] = 'root-controller';
 $load['js']['controllers'][] = 'home-controller';
 $load['js']['controllers'][] = 'panel-controller';
+$load['js']['controllers'][] = 'panel-home-controller';
 $load['js']['controllers'][] = 'signup-controller';
-$load['js']['controllers'][] = 'signup-edit-controller';
-$load['js']['controllers'][] = 'create-store-controller';
+$load['js']['controllers'][] = 'panel-signup-controller';
+$load['js']['controllers'][] = 'panel-create-store-controller';
 
 
 

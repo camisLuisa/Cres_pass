@@ -17,8 +17,14 @@
 						</div>
 					</form>
 				</div>
+
 				<div class="w3-col m3">
-					<a data-toggle="modal" data-target="#loginModal">LOGIN</a> ou faça já o seu <a ui-sref="base.signup">CADASTRO</a>
+					<div ng-if="user.store">
+						<a ui-sref="root.panel.home">Olá, {{user.name}}</a>
+					</div>
+					<div ng-if="!user.store">
+						<a data-toggle="modal" data-target="#loginModal">LOGIN</a> ou faça já o seu <a ui-sref="root.signup">CADASTRO</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -123,7 +129,7 @@
 	<div class="nav navbar-nav text-center">
 		<a data-toggle="modal" data-target="#loginModal">LOGIN</a>
 		ou faça seu
-		<a ng-click="go('base.signup')">CADASTRO</a>
+		<a ng-click="go('root.signup')">CADASTRO</a>
 	</div> 
 </nav>
 
@@ -155,14 +161,14 @@
 		<label>Email</label>
 		<input type="email" name="Email" class="form-control" ng-model="input.email" placeholder="Seu email" required>
 		<br>
-		<div ng-if="(Form.Email.$touched || Form.$submitted) && Form.Email.$invalid">
+		<div ng-if="Form.$submitted && Form.Email.$invalid">
 				<span ng-if="Form.Email.$error.required">Este campo é obrigatório</span>
 				<span ng-if="Form.Email.$error.email">Este não é um email valido</span>
 			</div>
 		<label>Senha</label>
 		<input type="password" name="Password" class="form-control" ng-model="input.password" placeholder="Sua senha" required>
 		<br>
-		<div ng-if="(Form.Password.$touched || Form.$submitted) && Form.Password.$invalid">
+		<div ng-if="Form.$submitted && Form.Password.$invalid">
 				<span ng-if="Form.Password.$error.required">Este campo é obrigatório</span>
 			</div>
 		<button class="btn btn-primary btn-block" type="submit">Acessar</button>
