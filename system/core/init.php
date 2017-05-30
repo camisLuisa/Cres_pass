@@ -44,9 +44,10 @@ require_once 'config.php';
  * --------------------------------------------------
  */
 $url = explode('/', $_SERVER['REQUEST_URI']);
+while ($url[0]!='system') {
+	array_shift($url);
+}
 array_shift($url);
-array_shift($url);
-if($_SERVER['HTTP_HOST']=='localhost') array_shift($url);
 if(empty($url[count($url)-1])){
 	unset($url[count($url)-1]);
 }

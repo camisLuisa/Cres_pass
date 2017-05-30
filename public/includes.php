@@ -51,10 +51,11 @@ $load['js'][] = 'directives';
  */
 $load['js']['controllers'][] = 'root-controller';
 $load['js']['controllers'][] = 'home-controller';
+$load['js']['controllers'][] = 'signup-controller';
 $load['js']['controllers'][] = 'panel-controller';
 $load['js']['controllers'][] = 'panel-home-controller';
-$load['js']['controllers'][] = 'signup-controller';
 $load['js']['controllers'][] = 'panel-signup-controller';
+$load['js']['controllers'][] = 'panel-products-controller';
 $load['js']['controllers'][] = 'panel-create-store-controller';
 
 
