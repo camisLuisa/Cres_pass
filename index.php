@@ -130,11 +130,6 @@ require_once ASSETS_PATH.$include_file.'.php';
 		}
 	}
 	?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(".margin-fixed-top").css("margin-top",$(".navbar-fixed-top").height()+"px");
-		});
-	</script>
 	<!-- ANGULAR ROUTE BASE -->
 	<base href=<?= "/".$localhost_suffix."/" ?>>
 </head>
