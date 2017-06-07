@@ -75,51 +75,16 @@ CREATE TABLE IF NOT EXISTS `user_store`(
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 /* --------------------------------------------------
- * TABLE `category`
- * --------------------------------------------------
- */
-CREATE TABLE IF NOT EXISTS `category`(
-	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(50) 
-)ENGINE INNODB DEFAULT CHAR SET 'utf8';
-
-INSERT INTO `category`(`id`, `name`) VALUES
-	(1, "Acessórios"),(2, "Alimentação"),(3, "Banho e Higiene"),(4, "Brinquedos"),(5, "Cama e Decoração"),
-	(6, "Carrinho e Cia"),(7, "Festas Infantis"),(8, "Livros e DVD`s"),(9, "Móveis"),(10, "Roupas"),
-	(11, "Sapatos");
-
-/* --------------------------------------------------
  * TABLE `product`
  * --------------------------------------------------
  */
 CREATE TABLE IF NOT EXISTS `product`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`store_id` INT(11) NOT NULL,
 	`name` VARCHAR(50) NOT NULL UNIQUE,
-	`mark` VARCHAR(50) NULL DEFAULT NULL,
-	`category_id` INT(11) NOT NULL,
-	`gender` ENUM('meninos', 'meninas', 'unisex') NOT NULL,
-	`use_time` ENUM('nunca usado', 'em bom estado', 'com marcas de uso') NOT NULL,
-	`original_price` DECIMAL(7,2) NULL DEFAULT NULL,
-	`price` DECIMAL(7,2) NOT NULL,
-	`shipping_local` TINYINT(1) NOT NULL,
-	`shipping_delivery` TINYINT(1) NOT NULL,
-	`description` VARCHAR(255) NOT NULL,
-	`length` DECIMAL(7,2) NOT NULL,
-	`width` DECIMAL(7,2) NOT NULL,
-	`height` DECIMAL(7,2) NOT NULL,
-	`length_opened` DECIMAL(7,2) NULL DEFAULT NULL,
-	`width_opened` DECIMAL(7,2) NULL DEFAULT NULL,
-	`height_opened` DECIMAL(7,2) NULL DEFAULT NULL,
-	`weight` DECIMAL(5,2) NOT NULL,
-	CONSTRAINT `fk_product_store_id`
+	`store_id` INT(11) NOT NULL,
+	CONSTRAINT `fk_store_product_store_id`
 		FOREIGN KEY (`store_id`)
 		REFERENCES `store`(`id`)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE,
-	CONSTRAINT `fk_product_category_id`
-		FOREIGN KEY (`category_id`)
-		REFERENCES `category`(`id`)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
