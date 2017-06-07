@@ -14,47 +14,32 @@ define('IMG_LINK', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/Cres
 		</div>
 	</div>
 </div>
-<!--<div class="container testimonial">
-	<h1>DEPOIMENTOS</h1>
-	<i class="fa fa-quote-left" aria-hidden="true"></i>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi incidunt animi ratione eos architecto aspernatur, mollitia sequi. Eius, perferendis nostrum fugit! Sequi deleniti itaque unde aspernatur, tempore atque dicta. Numquam.</p>
-	<h4>Lorem Ipsum - Ipsum Lorem</h4>
-</div>-->
-<div class="container trendProducts">
-	<h1>Produtos em Destaque</h1><hr>
-	<ul class="list-inline">
-		<li><a href="#">EXEMPLO</a></li>
-		<li><a href="#">EXEMPLO</a></li>
-		<li><a href="#">EXEMPLO</a></li>
-		<li><a href="#">EXEMPLO</a></li>
-	</ul>
-	<div class="row">
-		<div class="col-md-3">
-			<img src="<?= IMG_LINK ?>1610259691_vitrine.jpg"> <!-- IMAGEM -->
-			<p>Loja Tal</p> <!-- NOME DA LOJA -->
-			<h4>Produto Tal</h4> <!-- NOME DO PRODUTO -->
-			<p>Marca Tal</p> <!-- Marca DO PRODUTO -->
-			<p>00</p> <!-- IDADE -->
-			<h5>R$ 00</h5> <!-- PREÇO -->
-			<a href="#">VER MAIS ROUPAS > ></a> <!-- LINK DA LOJA -->
-		</div>
-		<div class="col-md-3"></div>
-		<div class="col-md-3"></div>
-		<div class="col-md-3"></div>
-	</div>
-
-	<div class="container trendStores">
-		<h1>Lojinhas em Destaque</h1><hr>
-		<div class="row">
-			<div class="col-md-3">
-				<img src="<?= IMG_LINK ?>160704172434788.jpg"> <!-- IMAGEM -->
-				<h5>Loja Tal</h5> <!-- NOME DA LOJA -->
-				<p>00 publicados</p> <!-- QTD DE PRODUTO -->
-				<p>00 vendidos Tal</p> <!-- QTD VENDIDA -->
+<div class="w3-container text-center">
+	<h1>Produtos em Destaque</h1>
+	<div class="w3-row" style="overflow-x:scroll">
+		<ul class="w3-ul" style="display:inline-flex">
+			<div ng-repeat="x in [1,2,3,4,5,6,7,8,9,10]">
+				<li class="w3-col m3">
+					<div class="w3-card">
+						<img src="<?= IMG_LINK ?>1610259691_vitrine.jpg"> <!-- IMAGEM -->
+					</div>
+				</li>
 			</div>
-			<div class="col-md-3"></div>
-			<div class="col-md-3"></div>
-			<div class="col-md-3"></div>
-		</div>
-		<a href="">VER TODAS ></a><hr>
+		</ul>
 	</div>
+</div>
+<br>
+<div class="w3-container text-center">
+	<h1>Lojinhas em Destaque</h1>
+	<div class="w3-row" style="overflow-x:scroll">
+		<ul class="w3-ul" style="display:inline-flex">
+			<div ng-repeat="x in [1,2,3,4,5,6,7,8,9,10]">
+				<li class="w3-col m3">
+					<div class="w3-card">
+						<img src="<?= IMG_LINK ?>1610259691_vitrine.jpg"> <!-- IMAGEM -->
+					</div>
+				</li>
+			</div>
+		</ul>
+	</div>
+</div>

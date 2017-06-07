@@ -47,115 +47,20 @@
 		</div>
 	</div>
 </div>
-<!-- Content -->
+
+<!-- CONTENT -->
 <div class="w3-container w3-mobile margin-fixed-top">
 	<ui-view></ui-view>
 </div>
+
+<!-- FOOTER -->
 <div class="w3-container footer">
-	<div class="row">
-		<p>O que voce procura?</p>
-		<ul>
-			<li>Acessórios</li>
-			<li>Alimentação</li>
-			<li>Banho e Higiene</li>
-			<li>Brinquedos</li>
-			<li>Cama e Decoração</li>
-			<li>Roupas</li>
-		</ul>
-	</div>
-	<div class="row">
-		<p>Formas de pagamento</p>
-		<div class="imageCartao"></div>
-	</div>
-	<div class="row copyright">
+	<div class="w3-row copyright">
 		<p>&reg; Crescendo e Passando - 2017</p>
 	</div>
 </div>
-<!--
-<style type="text/css">
-.affix ~ .container-fluid {
-	 position: relative;
-	 top: 50px;
-  }
-</style>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3 text-center">
-			<a href="http://localhost/Cres_pass/" title="crescendo e passando"><img class="img-responsive center-block img-circle" src="<?= IMG_LINK ?>seguridad-objetos-cocina-1293.jpg" width="100" height="100"></a>
-		</div>
-	</div>
-</div>
-<nav class="navbar navbar-default" data-spy="affix" data-offset-top="100">
-	<div class="col-md-4">
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<a class="dropbtn" data-toggle="dropdown" href="#">Produtos<span class="caret"></span></a>
-					<ul class="dropdown-content">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropbtn" data-toggle="dropdown" href="#">Marcas<span class="caret"></span></a>
-					<ul class="dropdown-content">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Lojinhas</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="navbar-header">
-		<div class="col-xs-6 col-xs-offset-3">
-			<button type="button" class="navbar-toggle btn-block text-center" data-toggle="collapse" data-target="#myNavbar">
-				<i id="toggleIcon"class="fa fa-caret-square-o-down" aria-hidden="true"></i>
-			</button>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<form class="navbar-form" ng-submit="search(searchInput)">
-			<div class="input-group">
-				<input ng-model="searchInput" type="text" class="form-control" placeholder="Procure">
-				<span class="input-group-btn">
-					<button class="btn btn-primary" type="submit"><span class="fa fa-search"></span></button>
-				</span>
-			</div>
-		</form>
-	</div>
-	<div class="nav navbar-nav text-center">
-		<a data-toggle="modal" data-target="#loginModal">LOGIN</a>
-		ou faça seu
-		<a ng-click="go('root.signup')">CADASTRO</a>
-	</div> 
-</nav>
 
-<ui-view></ui-view>
-
-<div class="container-fluid footer">
-	<div class="row">
-		<p>O que voce procura?</p>
-		<ul>
-			<li>Acessórios</li>
-			<li>Alimentação</li>
-			<li>Banho e Higiene</li>
-			<li>Brinquedos</li>
-			<li>Cama e Decoração</li>
-			<li>Roupas</li>
-		</ul>
-	</div>
-	<div class="row">
-		<p>Formas de pagamento</p>
-		<div class="imageCartao"></div>
-	</div>
-	<div class="row copyright">
-		<p>&reg; Crescendo e Passando - 2017</p>
-	</div>
-</div>
--->
+<!-- MODAL -->
 <modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">
 	<form name="Form" ng-submit="login(input)">
 		<label>Email</label>
