@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngMask']);
+var app = angular.module('app', ['ui.router', 'ngMask', 'angularFileUpload']);
 
 app.provider("$pathTo", function(){
 	var base = Window.PUBLIC_FOLDER_BASE_LINK;

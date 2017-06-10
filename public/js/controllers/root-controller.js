@@ -34,17 +34,14 @@ app.controller('RootController', function($scope, $state, $http, $pathTo, $rootS
 	};
 	
 	// Add top margin to elements bellow the fixed header based on its height
+	var marginTopSize = $("#fixed-header").height()+(isMobile()?30:70);
 	$(document).ready(function(){
-		$(".margin-fixed-top").css("margin-top",($("#fixed-header").height()+(isMobile()?0:63))+"px");
-	});
-
-	// jQuery code for Bootstrap tooltip element
-	$(document).ready(function(){
-	    $('[data-toggle="tooltip"]').tooltip(); 
+		$(".margin-fixed-top").css("margin-top",marginTopSize+"px");
 	});
 });
 
-function isMobile(){
+function isMobile()
+{
 	var userAgent = navigator.userAgent.toLowerCase();
 	if( userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i)!= -1 )
 		return true;

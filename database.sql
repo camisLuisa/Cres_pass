@@ -1,3 +1,10 @@
+/* Color Tones
+ * primary_blue = #87ceeb
+ * primary_pink = #f8c1c6
+ * secondary_blue = #6ca4bc
+ * secondary_pink = #c69a9e
+ */
+
 /* --------------------------------------------------
  * DATABASE `_api`
  * --------------------------------------------------

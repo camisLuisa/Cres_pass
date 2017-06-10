@@ -36,6 +36,7 @@ $load['js']['core'][] = 'angular-ui-router.min';
 $load['js']['core'][] = 'jquery.min';
 $load['js']['core'][] = 'bootstrap.min';
 $load['js']['core'][] = 'ngMask.min';
+$load['js']['core'][] = 'angular-file-upload.min';
 
 /* --------------------------------------------------
  * assets/js/

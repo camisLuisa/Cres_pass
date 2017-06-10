@@ -23,13 +23,7 @@ app.controller('PanelController', function($scope, $state, $http, user){
 				$scope.contentTitle = 'Histórico de Compras';
 				break;
 			case 'signup':
-				$scope.contentTitle = 'Editar Cadastro';
-				break;
-			case 'products':
-				$scope.contentTitle = 'Meus Produtos';
-				break;
-			case 'sales':
-				$scope.contentTitle = 'Minhas Vendas';
+				$scope.contentTitle = 'Cadastro';
 				break;
 		}
 		$state.go('root.panel.'+state);
