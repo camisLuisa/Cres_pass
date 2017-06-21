@@ -1,5 +1,5 @@
 app.controller('RootController', function($scope, $state, $http, $pathTo, $rootScope){
-	$scope.imgFolder = $pathTo.imgFolder;
+	$rootScope.imgFolder = $pathTo.imgFolder;
 
 	//Show on view the link that will be created for the store 
 	$rootScope.parseToLink = function(str){
@@ -32,11 +32,10 @@ app.controller('RootController', function($scope, $state, $http, $pathTo, $rootS
 			console.log('Erro!');
 		});
 	};
-	
-	// Add top margin to elements bellow the fixed header based on its height
-	var marginTopSize = $("#fixed-header").height()+(isMobile()?30:70);
+
 	$(document).ready(function(){
-		$(".margin-fixed-top").css("margin-top",marginTopSize+"px");
+		/* affix the navbar after scroll below header */
+		$(".navbar").affix({offset: {top: $("header").outerHeight(true)} });
 	});
 });
 

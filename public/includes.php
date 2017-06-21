@@ -23,9 +23,7 @@ $load['css']['core'][] = 'w3';
  * --------------------------------------------------
  */
 $load['css'][] = 'general';
-$load['css'][] = 'home';
 $load['css'][] = 'login-signup';
-$load['css'][] = 'header-footer';
 
 /* --------------------------------------------------
  * assets/js/core/

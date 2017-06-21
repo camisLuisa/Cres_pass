@@ -87,7 +87,7 @@ require_once ASSETS_PATH.$include_file.'.php';
 	</script>
 	<meta charset="utf-8">
 	<!--<link rel="icon" href="img/favicon.png" />-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>Crescendo e Passando</title>
 	<?php
 	# Function to simplificate the include of a file.

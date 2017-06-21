@@ -32,7 +32,7 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 	$stateProvider
 	.state({
 		name: 'root',
-		templateUrl: pathTo.viewsFolder+'root.php',
+		templateUrl: pathTo.viewsFolder+'root.php', /*TESTING NEW ROOT PAGE*/
 		controller: 'RootController'
 	})
 	.state({

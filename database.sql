@@ -1,8 +1,10 @@
 /* Color Tones
- * primary_blue = #87ceeb
- * primary_pink = #f8c1c6
- * secondary_blue = #6ca4bc
- * secondary_pink = #c69a9e
+ * primary_yellow = #FFE289
+ * primary_blue = #87CEEB
+ * primary_pink = #F8C1C6
+ * secondary_yelow = #fec860
+ * secondary_blue = #6CA4BC
+ * secondary_pink = #C69A9E
  */
 
 /* --------------------------------------------------

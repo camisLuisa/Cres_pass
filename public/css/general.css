@@ -1,70 +1,100 @@
 
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300');
 
-* {font-family: 'Work Sans', sans-serif;}
+* {font-family: 'Work Sans', sans-serif;font-weight: bold}
 
 a {text-decoration: none !important;}
+footer{
+	margin-top: 20px;
+}
+.border{
+	border: 1px solid black;
+}
+.no-padding{
+	padding: 0;
+}
+.no-margin{
+	margin: 0;
+}
+.affix {
+	top: 0;
+	width: 83.4%;
+}
+.affix + .container-fluid {
+	padding-top: 87px;
+}
+.root-background-image{
+	background-image: url("../img/root-background-image.png");
+}
+.navbar-decoration{
+	width: 100%;
+	min-height: 35px;
+	background-image: url("../img/navbar-decoration.png");
+}
+.navbar{
+	z-index: 3;
+	background-color: #FFE289;
+	border: none;
+}
+.bg-color-2y{
+	background-color: #FEC860;
+}
+#HomePage > .row{
+	padding: 10px;
+}
+/* Small devices (991px and down) */
+@media (max-width: 991px) { 
+	.affix {
+		width: 100%;
+	}
+}
+/* Extra small devices (991px and down) */
+@media (max-width: 767px) {     
+	.affix + .container-fluid {
+		padding-top: 324px;
+	}
+}
+/***************************************************/
+/* OLD CSS | OLD CSS | OLD CSS | OLD CSS | OLD CSS */
+/***************************************************/
 
 /* DROPDOWN ON HOVER */
 .dropbtn {/*visual botão principal*/
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
 }
 
 .dropdown-content {/*ponto chave do dropdown*/
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	list-style: none;
+	padding: 0;
 }
 
 .dropdown-content a {/* aparencia das opções*/
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}/*muda cor da opção q o cursor está em cima*/
 
 .dropdown:hover .dropdown-content {/*ponto chave para o dropdown sem click*/
-    display: block;
+	display: block;
 }
 
 .dropdown:hover .dropbtn {/*cor do botão que muda quando passa o mouse*/
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
-/*---menu-bar afix---*/
-
- .affix {
-      top: 0;
-      width: 100%;
-  }
-
-  .affix + .container-fluid {
-      padding-top: 70px;
-  }
-
-  .navbar {
-    z-index: 3;
-  }
-
-  .imageCartao{/*classe da imagem do cartão depois farei melhor camila*/
-    background-image: url(http://www.bb.com.br/docs/pub/inst/img/bandeirascartoes.png);
-    background-size: cover;
-    width: 10;
-    height: 10;
-  }
-
-  /*signup*/
 
 input.ng-touched.ng-invalid {
   border-color: #F99;
