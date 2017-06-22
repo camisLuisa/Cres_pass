@@ -1,4 +1,3 @@
-
 <div class="container-fluid text-center"> <!-- layout-base-container -->
 	<div class="row root-background-image"> <!-- layout-base-row -->
 		<div class="col-md-10 col-md-offset-1 no-padding"> <!-- layout-base-column -->
@@ -42,15 +41,18 @@
 			<div class="container-fluid w3-white" style="padding-bottom: 300px">
 				<ui-view></ui-view>
 			</div>
-			<footer class="container-fluid no-padding bg-color-2y" style="padding: 100px">
-				FOOTER
+			<footer class="container-fluid base-padding bg-color-2y">
+				<div class="">
+					©2017 - Crescendo e Passando - Todos os direitos reservados - CNPJ nnn <br>
+					<a href="#" data-toggle="modal" data-target="#TermsAndConditionsModal">Termos e Condições de Uso</a> | <a href="#" data-toggle="modal" data-target="#PrivacyPolicyModal">Política de Privacidade</a> | <a href="#" data-toggle="modal" data-target="#ContactUsModal">Entre em contato</a>
+				</div>
 			</footer>
 
 		</div> <!-- END layout-base-column -->
 	</div> <!-- END layout-base-row -->
 </div> <!-- END layout-base-container -->
 
-<!-- MODAL -->
+<!-- LOGIN MODAL -->
 <modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">
 	<form name="Form" ng-submit="login(input)">
 		<label>Email</label>
@@ -68,4 +70,17 @@
 			</div>
 		<button class="btn btn-primary btn-block" type="submit">Acessar</button>
 	</form>
+</modal>
+
+<!-- TERMS AND CONDITIONS MODAL -->
+<modal class="text-center" modal-id="TermsAndConditionsModal" modal-type="md" modal-title="Termos e Condições de Uso">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut lacinia enim. Donec non mi tincidunt, accumsan magna eu, finibus tellus. In nec erat sit amet turpis vulputate fringilla. Morbi vel convallis nulla, et auctor felis. Vestibulum id dapibus turpis. Nullam dictum erat nec diam vestibulum molestie a sed sapien. Nulla facilisi. Aenean tincidunt ante eget risus luctus pretium a ut justo. Aenean a cursus diam. Nulla facilisi. Sed sed erat tortor.
+</modal>
+
+<!-- PRIVACY POLICY MODAL -->
+<modal class="text-center" modal-id="PrivacyPolicyModal" modal-type="md" modal-title="Termos e Condições de Uso">
+</modal>
+
+<!-- CONTACT US MODAL -->
+<modal class="text-center" modal-id="ContactUsModal" modal-type="md" modal-title="Termos e Condições de Uso">
 </modal>

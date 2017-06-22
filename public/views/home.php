@@ -81,9 +81,8 @@
 								<div class="col-md-2 w3-card base-padding" ng-class="(j==1)?'col-md-offset-2':'hidden-sm hidden-xs'">
 									<img class="img-responsive no-margin" src="{{imgFolder}}ex.png">
 									Nome da Lojinha <br>
-									Marca: Lorem<br>
-									<span style="color:#87CEEB">R$ 00,00</span> <br>
-									<span style="color:#fec860">12x R$ 00,00</span> <br>
+									<i class="fa fa-tags" aria-hidden="true"></i> 00 publicados<br>
+									<i class="fa fa-gift" aria-hidden="true"></i> 00 vendidos<br>
 								</div>
 							</a>
 						</div>
@@ -94,8 +93,8 @@
 								<div class="col-md-2 w3-card base-padding" ng-class="(j==1)?'col-md-offset-2':'hidden-sm hidden-xs'">
 									<img class="img-responsive no-margin" src="{{imgFolder}}ex.png">
 									Nome da Lojinha <br>
-									<span></span> 00 publicados<br>
-									<span></span> 00 vendidos<br>
+									<i class="fa fa-tags" aria-hidden="true"></i> 00 publicados<br>
+									<i class="fa fa-gift" aria-hidden="true"></i> 00 vendidos<br>
 								</div>
 							</a>
 						</div>
