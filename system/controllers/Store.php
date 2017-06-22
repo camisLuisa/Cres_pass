@@ -103,5 +103,41 @@ class Store extends Controller{
 			}
 		}
 	}
+
+	public function getLoja(){
+		$data = $this->get_post();
+		if(is_null($data)){
+			$this->set_message('error.');
+			return;
+		} 
+
+		$exist = $this->model['Store_model']->select('store',"WHERE name ='" .$data['name'] . "'","`name`, `descricao`");
+
+		if (!$exist) {
+			$this->set_message('error.');
+			return;
+		}
+
+		$this->return['loja'] = $this->model['Store_model']->get_result();
+
+	}
+
+	public function myLoja(){
+		
+		if(!isset($_SESSION['user_id'])){
+			$this->return['success'] = FALSE;
+			return;
+		}
+	
+		$loja  = $this->model['Store_model']->select('store', "WHERE name ='" .$_SESSION['user_id']. "'");
+
+		if(!$loja) {
+			$this->set_message('error.');
+			return;
+		}
+
+		$this->return['loja'] = $this->model['Store_model']->get_result();
+	
+	}
 }
 ?>

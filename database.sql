@@ -60,7 +60,10 @@ VALUES ('admin@admin.com', '$2y$10$5/oe0cWGklbKntGamphVR.7ZusFckOuefh3aInUG598ld
  */
 CREATE TABLE IF NOT EXISTS `store`(
 	`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(50) NOT NULL UNIQUE
+	`name` VARCHAR(50) NOT NULL UNIQUE,
+	`descricao` VARCHAR(255),
+	`id_user` INT(11),
+	FOREIGN KEY (id_user) REFERENCES user (id)
 )ENGINE INNODB DEFAULT CHAR SET 'utf8' AUTO_INCREMENT=10;
 
 /* --------------------------------------------------

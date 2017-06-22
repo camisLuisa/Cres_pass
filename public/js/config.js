@@ -79,6 +79,11 @@ app.config(function($stateProvider,$pathToProvider, $locationProvider, $urlRoute
 		templateUrl: pathTo.viewsFolder+'viewStore.php',
 		controller: 'ViewStoreController'
 	})
+	.state({
+		name: 'root.panel.myStore',
+		templateUrl: pathTo.viewsFolder+'myStore.php',
+		controller: 'MyStoreController'
+	})
 	;
 
  	$urlRouterProvider.otherwise('/');
