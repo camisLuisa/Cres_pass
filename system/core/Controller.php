@@ -171,4 +171,9 @@ class Controller
 		}
 		return $this->lib[$file];
 	}
+
+	public function set_message($message){
+		$this->return['success'] = false;
+		$this->return['error'].= $message;
+	}
 }

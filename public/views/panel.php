@@ -45,6 +45,8 @@
 				<button class="list-group-item" ng-click="loadContent('signup')">
 					<i class="fa fa-user" aria-hidden="true"></i> EDITAR CADASTRO
 				</button>
+
+				
 			</div>
 		</div>
 		<div class="col-sm-9">

@@ -56,7 +56,6 @@ $load['js']['controllers'][] = 'panel-home-controller';
 $load['js']['controllers'][] = 'panel-signup-controller';
 $load['js']['controllers'][] = 'panel-products-controller';
 $load['js']['controllers'][] = 'panel-create-store-controller';
-
-
+$load['js']['controllers'][] = 'view-store-controller';
 
 
