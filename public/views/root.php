@@ -31,7 +31,7 @@
 						</form>
 						<ul class="nav navbar-nav navbar-right no-margin">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Cadastro</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						</ul>
 					</div> <!-- END navbar-options-row -->
 					<div class="row w3-white"> <!-- navbar-decoration-row -->
@@ -50,6 +50,22 @@
 	</div> <!-- END layout-base-row -->
 </div> <!-- END layout-base-container -->
 
-<script>
-
-</script>
+<!-- MODAL -->
+<modal class="text-center" modal-id="loginModal" modal-type="sm" modal-title="Login">
+	<form name="Form" ng-submit="login(input)">
+		<label>Email</label>
+		<input type="email" name="Email" class="form-control" ng-model="input.email" placeholder="Seu email" required>
+		<br>
+		<div ng-if="Form.$submitted && Form.Email.$invalid">
+				<span ng-if="Form.Email.$error.required">Este campo é obrigatório</span>
+				<span ng-if="Form.Email.$error.email">Este não é um email valido</span>
+			</div>
+		<label>Senha</label>
+		<input type="password" name="Password" class="form-control" ng-model="input.password" placeholder="Sua senha" required>
+		<br>
+		<div ng-if="Form.$submitted && Form.Password.$invalid">
+				<span ng-if="Form.Password.$error.required">Este campo é obrigatório</span>
+			</div>
+		<button class="btn btn-primary btn-block" type="submit">Acessar</button>
+	</form>
+</modal>
